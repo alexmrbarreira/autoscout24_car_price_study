@@ -1,5 +1,5 @@
 
-from parameters_de import *
+from parameters import *
 
 # This script scrapes the autoscout24.de webpages for car data
 #   It first selects car URLs that match the desired search criteria
@@ -33,7 +33,7 @@ for city in city_list:
 
                     # Call to main URL from which to collect car URLs (save all links - a tags - which are scraped later)
                     try:
-                        url = 'https://www.autoscout24.de/lst/'+brand+'/'+city[0]+'?atype=C&cy=D&desc=0&fregfrom='+min_year+'&'+city[1]+'&ocs_listing=include&page='+str(page)+'&pricefrom='+price_bin_edges[iprice]+'&priceto='+price_bin_edges[iprice+1]+'&search_id=z3rlqsigeg&sort=standard&source=listpage_pagination&ustate=N%2CU&zipr='+search_radius
+                        url = 'https://www.autoscout24.de/lst/'+brand+'/'+city[0]+'?atype=C&body='+body+'&cy=D&desc=0&fregfrom='+min_year+'&'+city[1]+'&ocs_listing=include&page='+str(page)+'&pricefrom='+price_bin_edges[iprice]+'&priceto='+price_bin_edges[iprice+1]+'&search_id=z3rlqsigeg&sort=standard&source=listpage_pagination&ustate=N%2CU&zipr='+search_radius
                         only_a_tags = SoupStrainer("a")
                         soup = BeautifulSoup(requests.get(url).text,'lxml', parse_only=only_a_tags)
                     except Exception as e:
@@ -47,7 +47,7 @@ for city in city_list:
                             if( (brand not in target_url) ):
                                 print ('                The brand string does not appear in the car URLs; could signal that the search failed. Check input parameters.')
                                 print ('                brand, URL = ', brand, target_url)
-                            cars_URL.append('https://www.autoscout24.de/' + target_url)
+                            cars_URL.append('https://www.autoscout24.de' + target_url)
                             k_counter += 1
                 if(k_counter > 400):
                     print ('')
@@ -65,33 +65,49 @@ print ('Total number of car URLs', len(cars_URL))
 # Loop over car URLs and parse desired information
 # ======================================================= 
 cars_data = []
-counter = 1
 for url in cars_URL:
     dict_now = {}
-    if (np.mod(counter, int(len(cars_URL)/10))==0):
-        print ('Done collecting data for', counter, 'cars')
 
     try:
-        car         = BeautifulSoup(requests.get('https://www.autoscout24.de' + url).text, 'lxml')
+        car         = BeautifulSoup(requests.get(url).text, 'lxml')
+        # Get car price
         price_parse = car.find_all("span", attrs={"class":"PriceInfo_price__JPzpT"})
-        other_parse = car.find_all("div", attrs={"class":"VehicleOverview_itemText__V1yKT"})
+        price       = price_parse[0].text.split()[1].split(',')[0]
+        # Get main car features
+        main_parse = car.find_all("div", attrs={"class":"VehicleOverview_itemText__V1yKT"})
+        km         = main_parse[0].text.split()[0]
+        trans      = main_parse[1].text
+        year       = main_parse[2].text.split('/')[1]
+        gas        = main_parse[3].text.split()[0]
+        power      = main_parse[4].text.split()[2].split('(')[1]
+        seller     = main_parse[5].text
+        # Get number of owners 
+        n_owners      = float('nan')
+        history_parse = car.find_all("div", attrs={"class":"DetailsSection_container__kJAVE DetailsSection_breakElement__ODImO", "data-cy":"listing-history-section"})
+        history_attrs = history_parse[0].find_all("dt")
+        history_value = history_parse[0].find_all("dd")
+        for i in range(len(history_attrs)):
+            if(history_attrs[i].text == 'Fahrzeughalter'):
+                n_owners = history_value[i].text
+        # Get warranty
+        warranty     = 'nan'
+        basics_parse = car.find_all("div", attrs={"class":"DetailsSection_container__kJAVE DetailsSection_breakElement__ODImO", "data-cy":"basic-details-section"})
+        basics_attrs = basics_parse[0].find_all("dt")
+        basics_value = basics_parse[0].find_all("dd")
+        for i in range(len(basics_attrs)):
+            if(basics_attrs[i].text == 'Garantie'):
+                warranty = basics_value[i].text
 
-        # Get the attributes: {price, km, transmission, year, gas, power} (playing string tricks here to get desired data)
-        price = price_parse[0].text.split()[1].split(',')[0]
-        km    = other_parse[0].text.split()[0]
-        trans = other_parse[1].text
-        year  = other_parse[2].text.split('/')[1]
-        gas   = other_parse[3].text.split()[0]
-        power = other_parse[4].text.split()[2].split('(')[1]
+        print ([price, km, power, year, gas, trans, seller, n_owners, warranty, url])
 
-        cars_data.append([price, km, power, year, gas, trans, url])
-        counter += 1
+        cars_data.append([price, km, power, year, gas, trans, seller, n_owners, warranty, url])
 
     except Exception as e:
+        print ('')
         print ('Loading data failed for car URL', url, ':' + str(e) +" "*50, end="\r")
-        counter += 1
+        print ('')
 
 # Save to file
-df = pd.DataFrame(cars_data, columns=['Price', 'Km', 'Power', 'Year', 'Gas', 'Transmission', 'URL'])
-df.to_csv(data_filename)
+df = pd.DataFrame(cars_data, columns=['Price', 'Km', 'Power', 'Year', 'Gas', 'Transmission', 'Seller', 'Owners', 'Warranty', 'URL'])
+df.to_csv('test', index=False)
 
