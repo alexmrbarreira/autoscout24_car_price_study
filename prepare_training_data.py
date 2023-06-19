@@ -1,12 +1,5 @@
 from parameters import *
 
-print ('Not running this script until the new scraping finishes to continue working .... ')
-print ('Not running this script until the new scraping finishes to continue working .... ')
-print ('Not running this script until the new scraping finishes to continue working .... ')
-print ('Not running this script until the new scraping finishes to continue working .... ')
-quit()
-
-
 # This script prepares the car data for training
 #   It numerically encodes string variables and deals with missing values
 #   It splits into training and validation sets
@@ -33,9 +26,15 @@ def prepare_data(filename):
 
     # Remove entries with nan in the price
     n0 = df.shape[0]
-    df = df.dropna(subset=['Price'])
+    df = df.dropna(subset=['Price[1000Eur]'])
     n1 = df.shape[0]
     print ('Removed', n0-n1, 'rows that had price=nan')
+
+    # Keep only cars with < 300,000km (to remove severe outliers (e.g.~taxis))
+    n0 = df.shape[0]
+    df = df.loc[df['1000Km'] < 300.]
+    n1 = df.shape[0]
+    print ('Removed', n0-n1, 'rows with 1000Km > 300')
 
     # Replace nan in Owners with most common, and Warranty with 'Nein'
     most_common_owners = df['Owners'].mode()[0]
@@ -48,15 +47,21 @@ def prepare_data(filename):
     df['Warranty'].loc[df['Warranty'].str.contains('Monate', na=False)] = 'Ja'
     print ('In Warranty, replaced month specification with 1, all others with 0')
 
-    # In Gas, group all hybrids
-    df['Gas'].loc[df['Gas'].str.contains('Elektro/Benzin', na=False)] = 'Hybrid'
-    df['Gas'].loc[df['Gas'].str.contains('Elektro/Diesel', na=False)] = 'Hybrid'
-    df['Gas'].loc[df['Gas'].str.contains('Sonstige'      , na=False)] = 'Hybrid'
-    print ('In Gas, grouped all hybrids together')
+    # In Gas, group all non diesel/benzin into Other (dominated by electric/hybrid)
+    df['Gas'].loc[df['Gas'].str.contains('Elektro'       , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Elektro/Benzin', na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Elektro/Diesel', na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Erdgas'        , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Autogas'       , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Ethanol'       , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Sonstige'      , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('-'             , na=False)] = 'Other'
+    print ('In Gas, grouped all non-diesel/benzin into Other (dominated by electric and hybrids)')
 
-    # In Tranmission, if km are specified assume it is elektro/hybrid and so automatik 
-    df['Transmission'].loc[df['Transmission'].str.contains('km', na=False)] = 'Automatik'
-    df['Transmission'].loc[df['Transmission'].str.contains('-', na=False)] = 'Automatik'
+    # In Transmission, if km are specified assume it is elektro/hybrid and so automatik 
+    df['Transmission'].loc[df['Transmission'].str.contains('km', na=False)]            = 'Automatik'
+    df['Transmission'].loc[df['Transmission'].str.contains('-', na=False)]             = 'Automatik'
+    df['Transmission'].loc[df['Transmission'].str.contains('Halbautomatik', na=False)] = 'Automatik'
 
     # Label encode categorial variables
     le_city         = label_encode_variable(df, 'City') 

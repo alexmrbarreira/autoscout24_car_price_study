@@ -64,11 +64,11 @@ def get_train_valid_data():
     N_train = df_train.shape[0]
     N_valid = df_valid.shape[0]
     # Get features
-    train_features = df_train.drop(['Price'], axis = 1)
-    valid_features = df_valid.drop(['Price'], axis = 1)
+    train_features = df_train.drop(['Price[1000Eur]'], axis = 1)
+    valid_features = df_valid.drop(['Price[1000Eur]'], axis = 1)
     # Get labels
-    train_labels = df_train['Price']
-    valid_labels = df_valid['Price']
+    train_labels = df_train['Price[1000Eur]']
+    valid_labels = df_valid['Price[1000Eur]']
     # return 
     return df_train, df_valid, train_features, valid_features, train_labels, valid_labels, N_train, N_valid, N_featu
 

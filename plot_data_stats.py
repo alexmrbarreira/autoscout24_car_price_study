@@ -12,11 +12,10 @@ cols     = df_total.columns.tolist()
 le_city, le_brand, le_body, le_gas, le_transmission, le_seller, le_warranty = get_encoders()
 list_of_le = [le_city, le_brand, le_body, None, None, None, None, le_gas, le_transmission, le_seller, None, le_warranty]
 
-#df = pd.read_csv('data_store/data_cars_autoscout24_monday.csv')
-#a = df['URL'].loc[df['Power'] > 500]
+#df = pd.read_csv('data_store/data_cars_autoscout24.csv')
+#a = df['URL'].loc[df['1000Km'] > 500]
 #for i in a:
 #    print (i)
-
 
 # ================================================================ 
 # Plot # of cars as a function of features
@@ -46,7 +45,7 @@ def plot_hist(df, feature):
     # Add mean car price trend in feature bin (normalized by max count)
     mean_price = np.zeros(nbins)
     for i in range(nbins):
-        mean_price[i] = df['Price'].loc[ (df[feature] >= bin_edges[i]) & (df[feature] < bin_edges[i+1]) ].mean()
+        mean_price[i] = df['Price[1000Eur]'].loc[ (df[feature] >= bin_edges[i]) & (df[feature] < bin_edges[i+1]) ].mean()
     mean_price = mean_price * max(counts) / max(mean_price)
     plt.plot(bin_means, mean_price, linewidth = 2., linestyle = 'dashed', c = 'darkorange')
     # Cosmetics
