@@ -76,16 +76,18 @@ def get_encoders():
     le_city         = load(open('encoder_store/le_city.pkl', 'rb'))
     le_brand        = load(open('encoder_store/le_brand.pkl', 'rb'))
     le_body         = load(open('encoder_store/le_body.pkl', 'rb'))
+    le_year         = load(open('encoder_store/le_year.pkl', 'rb'))
     le_gas          = load(open('encoder_store/le_gas.pkl', 'rb'))
     le_transmission = load(open('encoder_store/le_transmission.pkl', 'rb'))
     le_seller       = load(open('encoder_store/le_seller.pkl', 'rb'))
+    le_owners       = load(open('encoder_store/le_owners.pkl', 'rb'))
     le_warranty     = load(open('encoder_store/le_warranty.pkl', 'rb'))
-    return le_city, le_brand, le_body, le_gas, le_transmission, le_seller, le_warranty
+    return le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty
 
 # ======================================================= 
 # Basic ploting parameters 
 # ======================================================= 
-ticksize    = 22
+ticksize    = 16
 tick_major  = 10.
 tick_minor  = 5.
 tickwidth   = 1.5

@@ -123,8 +123,19 @@ def save_car_data(filename, cars_URL, city, brand, body):
 # ======================================================================
 
 filename = 'data_store/data_cars_autoscout24.csv'
-car_counter = 0
 
+if os.path.exists(filename):
+    print ('')
+    print ('=====================================================================================================================')
+    print ('*********************************************************************************************************************')
+    print ('')
+    print ('BEWARE! Note that the file', filename, 'already exists; this will append data to it potentially creating duplicates!')
+    print ('')
+    print ('*********************************************************************************************************************')
+    print ('=====================================================================================================================')
+    print ('')
+
+car_counter = 0
 # Loop over the cities
 for city in city_list:
     print ('Doing city', city[0], 'out of', [a[0] for a in city_list])

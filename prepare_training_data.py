@@ -43,9 +43,9 @@ def prepare_data(filename):
     print ('In Owners, replaced nan with most common')
     
     # In Warranty: if it specifies months assume warranty (1), otherwise assume no warranty (0)
-    df['Warranty'].loc[df['Warranty'] == 'Ja']   = 'Nein'
-    df['Warranty'].loc[df['Warranty'].str.contains('Monate', na=False)] = 'Ja'
-    print ('In Warranty, replaced month specification with 1, all others with 0')
+    #df['Warranty'].loc[df['Warranty'] == 'Ja']   = 'Nein'
+    df['Warranty'].loc[df['Warranty'].str.contains('Monate', na=False)] = 'Ja-exp'
+    print ('In Warranty, replaced month specification with "Ja-exp"')
 
     # In Gas, group all non diesel/benzin into Other (dominated by electric/hybrid)
     df['Gas'].loc[df['Gas'].str.contains('Elektro'       , na=False)] = 'Other'
@@ -67,9 +67,11 @@ def prepare_data(filename):
     le_city         = label_encode_variable(df, 'City') 
     le_brand        = label_encode_variable(df, 'Brand') 
     le_body         = label_encode_variable(df, 'Body') 
+    le_year         = label_encode_variable(df, 'Year') 
     le_gas          = label_encode_variable(df, 'Gas') 
     le_transmission = label_encode_variable(df, 'Transmission') 
     le_seller       = label_encode_variable(df, 'Seller') 
+    le_owners       = label_encode_variable(df, 'Owners') 
     le_warranty     = label_encode_variable(df, 'Warranty') 
 
     # Drop URL column
@@ -83,19 +85,21 @@ def prepare_data(filename):
         print ('Note the following columns still have NaN:')
         print (nan_cols)
 
-    return df, le_city, le_brand, le_body, le_gas, le_transmission, le_seller, le_warranty
+    return df, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty
 
 print ('')
 print ('Preparing data ...')
-df_prepared, le_city, le_brand, le_body, le_gas, le_transmission, le_seller, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
+df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
 
 # Save encoders for later use in transformations
 dump(le_city        , open('encoder_store/le_city.pkl'        , 'wb'))
 dump(le_brand       , open('encoder_store/le_brand.pkl'       , 'wb'))
 dump(le_body        , open('encoder_store/le_body.pkl'        , 'wb'))
+dump(le_year        , open('encoder_store/le_year.pkl'        , 'wb'))
 dump(le_gas         , open('encoder_store/le_gas.pkl'         , 'wb'))
 dump(le_transmission, open('encoder_store/le_transmission.pkl', 'wb'))
 dump(le_seller      , open('encoder_store/le_seller.pkl'      , 'wb'))
+dump(le_owners      , open('encoder_store/le_owners.pkl'      , 'wb'))
 dump(le_warranty    , open('encoder_store/le_warranty.pkl'    , 'wb'))
 
 # =======================================================
