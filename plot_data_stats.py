@@ -109,4 +109,4 @@ cb.ax.tick_params(labelsize = ticksize)
 
 fig1.savefig('fig_store/fig_data_stats_correlation.png')
 
-#plt.show()
+plt.show()

@@ -5,7 +5,7 @@ import requests
 import os
 import pandas as pd
 pd.options.mode.chained_assignment = None
-from sklearn import preprocessing
+from sklearn import preprocessing, linear_model, neighbors, tree
 from pickle import dump, load
 plt.rcParams.update({'text.usetex': True, 'mathtext.fontset': 'stix'}) #['dejavuserif', 'cm', 'custom', 'stix', 'stixsans', 'dejavusans']
 
