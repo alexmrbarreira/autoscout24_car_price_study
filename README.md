@@ -1,1 +1,1 @@
-# predicting_autoscout24_prices
+# autoscout24_prices_study
