@@ -5,8 +5,8 @@ import requests
 import os
 import pandas as pd
 pd.options.mode.chained_assignment = None
-from sklearn import preprocessing, linear_model, neighbors, tree
-from pickle import dump, load
+from sklearn import preprocessing, linear_model, neighbors, tree, svm
+import pickle
 plt.rcParams.update({'text.usetex': True, 'mathtext.fontset': 'stix'}) #['dejavuserif', 'cm', 'custom', 'stix', 'stixsans', 'dejavusans']
 
 # ======================================================= 
@@ -73,15 +73,15 @@ def get_train_valid_data():
     return df_train, df_valid, train_features, valid_features, train_labels, valid_labels, N_train, N_valid, N_featu
 
 def get_encoders():
-    le_city         = load(open('encoder_store/le_city.pkl', 'rb'))
-    le_brand        = load(open('encoder_store/le_brand.pkl', 'rb'))
-    le_body         = load(open('encoder_store/le_body.pkl', 'rb'))
-    le_year         = load(open('encoder_store/le_year.pkl', 'rb'))
-    le_gas          = load(open('encoder_store/le_gas.pkl', 'rb'))
-    le_transmission = load(open('encoder_store/le_transmission.pkl', 'rb'))
-    le_seller       = load(open('encoder_store/le_seller.pkl', 'rb'))
-    le_owners       = load(open('encoder_store/le_owners.pkl', 'rb'))
-    le_warranty     = load(open('encoder_store/le_warranty.pkl', 'rb'))
+    le_city         = pickle.load(open('encoder_store/le_city.pkl', 'rb'))
+    le_brand        = pickle.load(open('encoder_store/le_brand.pkl', 'rb'))
+    le_body         = pickle.load(open('encoder_store/le_body.pkl', 'rb'))
+    le_year         = pickle.load(open('encoder_store/le_year.pkl', 'rb'))
+    le_gas          = pickle.load(open('encoder_store/le_gas.pkl', 'rb'))
+    le_transmission = pickle.load(open('encoder_store/le_transmission.pkl', 'rb'))
+    le_seller       = pickle.load(open('encoder_store/le_seller.pkl', 'rb'))
+    le_owners       = pickle.load(open('encoder_store/le_owners.pkl', 'rb'))
+    le_warranty     = pickle.load(open('encoder_store/le_warranty.pkl', 'rb'))
     return le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty
 
 # ======================================================= 
@@ -97,6 +97,8 @@ text_font   = 22
 legend_font = 22
 tickpad     = 6.
 alpha_c     = 0.3
+msize       = 0.5
 
-
+minp_inplot = -10
+maxp_inplot = 110
 
