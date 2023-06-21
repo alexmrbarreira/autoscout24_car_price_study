@@ -5,7 +5,7 @@ import requests
 import os
 import pandas as pd
 pd.options.mode.chained_assignment = None
-from sklearn import preprocessing, linear_model, neighbors, tree, svm
+from sklearn import preprocessing, linear_model, neighbors, tree, neural_network, ensemble
 import pickle
 plt.rcParams.update({'text.usetex': True, 'mathtext.fontset': 'stix'}) #['dejavuserif', 'cm', 'custom', 'stix', 'stixsans', 'dejavusans']
 
@@ -60,18 +60,19 @@ def get_train_valid_data():
     df_train = pd.read_csv('data_store/data_prepared_train.csv')
     df_valid = pd.read_csv('data_store/data_prepared_valid.csv')
     # Get sizes
-    N_featu = len(df_train.columns.tolist())
+    N_featu = len(df_train.columns.tolist()) - 1
     N_train = df_train.shape[0]
     N_valid = df_valid.shape[0]
     # Get features
-    train_features = df_train.drop(['Price[1000Eur]'], axis = 1)
-    valid_features = df_valid.drop(['Price[1000Eur]'], axis = 1)
+    train_features = df_train.drop(['Price[1000Eur]'], axis = 1).to_numpy()
+    valid_features = df_valid.drop(['Price[1000Eur]'], axis = 1).to_numpy()
     # Get labels
-    train_labels = df_train['Price[1000Eur]']
-    valid_labels = df_valid['Price[1000Eur]']
+    train_labels = df_train['Price[1000Eur]'].to_numpy()
+    valid_labels = df_valid['Price[1000Eur]'].to_numpy()
     # return 
     return df_train, df_valid, train_features, valid_features, train_labels, valid_labels, N_train, N_valid, N_featu
 
+# Function that loads the encoders for inverse_transformations in plots
 def get_encoders():
     le_city         = pickle.load(open('encoder_store/le_city.pkl', 'rb'))
     le_brand        = pickle.load(open('encoder_store/le_brand.pkl', 'rb'))
@@ -83,6 +84,20 @@ def get_encoders():
     le_owners       = pickle.load(open('encoder_store/le_owners.pkl', 'rb'))
     le_warranty     = pickle.load(open('encoder_store/le_warranty.pkl', 'rb'))
     return le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty
+
+# Function that scales the features and labels by their maxima
+def scale_data(train_features, valid_features, train_labels, valid_labels):
+    new_train_features = np.zeros(np.shape(train_features))
+    new_valid_features = np.zeros(np.shape(valid_features))
+    new_train_labels = np.zeros(np.shape(train_labels))
+    new_valid_labels = np.zeros(np.shape(valid_labels))
+    N_featu = len(train_features[0,:])
+    for i in range(N_featu):
+        new_train_features[:,i] = train_features[:,i]/max(train_features[:,i])
+        new_valid_features[:,i] = valid_features[:,i]/max(valid_features[:,i])
+    new_train_labels = train_labels/max(train_labels)
+    new_valid_labels = valid_labels/max(valid_labels)
+    return new_train_features, new_valid_features, new_train_labels, new_valid_labels
 
 # ======================================================= 
 # Basic ploting parameters 
@@ -97,7 +112,7 @@ text_font   = 22
 legend_font = 22
 tickpad     = 6.
 alpha_c     = 0.3
-msize       = 0.5
+msize       = 1.0
 
 minp_inplot = -10
 maxp_inplot = 110
