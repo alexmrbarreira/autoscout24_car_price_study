@@ -6,7 +6,7 @@ These python scripts execute two main tasks:
 1. scrape the autoscout24.de webpages to extract car data for different german cities, car brands and body types.
 2. train machine learning models to predict car prices and study the relative importance of different car features to the final price.
 
-This figure shows the outcome of one of the best models. It shows that:
+This figure shows the outcome of one of the best models:
 
 1. the engine power is the most important feature in setting the car price, followed by the car year and the number of kilometers. 
 2. Beyond that, the fuel type (diesel, petrol, eletric), type of transmission (auto vs. manual), car brand and chassis type have also a visible importance.
