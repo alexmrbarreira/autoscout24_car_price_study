@@ -45,7 +45,14 @@ Note however that, of course, a correlation does not imply a causation. For exam
 <!-- ==================================================================================================================== -->
 ## Machine learning model predictions
 
-This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are (i) a linear regression model, (ii) a k nearest neighbors model, (iii) a decision tree, (iv) a random forest and (v) a multi-layer perceptron (dense neural network). The mean squared errors (MSE) and mean percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
+This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are 
+1. a linear regression model,
+2. a k nearest neighbors model,
+3. a decision tree,
+4. a random forest and,
+5. a multi-layer perceptron (dense neural network). 
+
+The mean squared errors (MSE) and mean percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
 
 <img src="fig_store/fig_model_comparison.png">
 
