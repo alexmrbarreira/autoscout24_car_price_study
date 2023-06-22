@@ -26,7 +26,7 @@ list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_
 # ================================================================ 
 
 fig0 = plt.figure(0, figsize = (17., 10.))
-fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.09, top = 0.98, hspace = 0.4, wspace = 0.2)
+fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.98, hspace = 0.45, wspace = 0.2)
 
 def plot_bincount(df, feature, le):
     # Add counts
@@ -42,7 +42,10 @@ def plot_bincount(df, feature, le):
     mean_price = mean_price * max(counts) / max(mean_price) * 0.9
     plt.plot(xx, mean_price, linewidth = 2., linestyle = 'dashed', c = 'darkorange', label = 'Price trend')
     # Cosmetics
-    plt.xticks(range(len(xx_names)), xx_names, rotation = 30.)
+    if( (feature=='Brand') or (feature=='Year') ):
+        plt.xticks(range(len(xx_names)), xx_names, rotation = 55.)
+    else:
+        plt.xticks(range(len(xx_names)), xx_names, rotation = 30.)
     plt.tick_params(length=tick_major, width=tickwidth , bottom=True, top=True, left=True, right=True, direction = 'in', which = 'major', pad = tickpad, labelsize = ticksize)
     return 0
 
