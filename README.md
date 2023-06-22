@@ -8,4 +8,4 @@ These python scripts execute two main tasks:
 
 
 
-![](fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png)
+![](fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png =100x20)
