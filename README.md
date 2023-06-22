@@ -245,3 +245,5 @@ for i in range(Nmodels):
     feature_importance_valid_list.append( get_average_feature_importance(model_list[i], valid_features, valid_labels, N_random)[0] )
 ```
 
+The function *get_feature_importance()* estimates the feature importance by randomization; the function *get_average_feature_importance()* does the estimations N_random times to get an average value.
+
