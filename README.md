@@ -19,6 +19,13 @@ This figure shows the outcome of one of the best models:
 - [Machine learning model performance](#machine-learning-model-performance)
 - [Code overview](#code-overview)
 
+## The car data
+
+This figure shows the 
+
+![](fig_store/fig_data_stats_counts.png)
+
+<img src="fig_store/fig_data_stats_counts.png">
 
 ## Code overview
 
