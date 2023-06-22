@@ -154,7 +154,7 @@ This files prepares the car data for training:
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
 #### plot_data_stats.py
-This file simply plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
+This file plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
