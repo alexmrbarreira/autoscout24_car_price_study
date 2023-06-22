@@ -40,7 +40,7 @@ Other global functions, parameters and library imports are also specified here. 
 #### scrape_autoscout24_de.py
 This file does the autoscout24.de scraping. From each car it extracts the following: price, city, brand, body, km, power, year, fuel, transmission, seller, owners, warranty type.
 
-The data is saved in the file data_store/data_store/data_cars_autoscout24.csv. The folder data_store/ contains already data from some searches. To extract all of the data for a single city it takes about 4-5h (depending on the internet speed and CPU).
+The data is saved in the file data_store/data_store/data_cars_autoscout24.csv. The folder data_store/ contains already data from some searches. To extract all of the data for a single city, 9 car brands and 5 chassis types it takes about 4-5h (depending on the internet speed and CPU).
 
 
 
