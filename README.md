@@ -56,7 +56,7 @@ The mean squared errors (MSE) and mean absolute percentage errors (MPE) are list
 
 <img src="fig_store/fig_model_comparison.png">
 
-The random forest model performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
+The random forest model performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs closer to the other models in the validation set.
 
 The mean absolute percentage errors on the validation sets are:
 
