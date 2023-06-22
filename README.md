@@ -30,7 +30,7 @@ This figure shows the outcome of one of the best models:
 
 This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
 
-1. The average prices decrease with the number of kilometers, and increase with engine power and car year (more recent, more expensive).
+1. The average prices decrease with the kilometers, and increase with engine power and car year (more recent, more expensive).
 2. Cars with manual transmission, petrol as fuel (benzin) and sold by private sellers are also cheaper on average. 
 
 <img src="fig_store/fig_data_stats_counts.png">
