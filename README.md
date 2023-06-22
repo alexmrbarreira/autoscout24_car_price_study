@@ -70,6 +70,12 @@ The function *get_cars_URL()* first collects all desired car URL addresses, whic
 
 The data is saved in the file *data_store/data_store/data_cars_autoscout24.csv*. The folder *data_store/* contains already data from some searches. To extract all of the data for a single city, single car brands and 4 chassis types it takes about 30m (depending on the internet speed and CPU).
 
+#### prepare_training_data.py
+This files prepares the car data for training:
+1. it deals with missing values;
+2. engineers some of the features;
+3. encodes categorical variables;
+4. splits into training/validation data (80/20\%).
 
 
 
