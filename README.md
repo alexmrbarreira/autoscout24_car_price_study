@@ -39,7 +39,7 @@ The correlation matrix shown next displays some of the main takeaway points.
 
 <img src="fig_store/fig_data_stats_correlation.png" width="600" height=auto/>
 
-Note however that, of course, a correlation does not imply a causation. For example, it could be that people who choose to sell their cars privately rather than through an autostand tendentialy sell older cars, and thus ask for lower prices. Next, we will use the machine learning models to gain more insights on what actually determines the car prices.
+Note however that, of course, a correlation does not imply a causation. For example, it could be that people who choose to sell their cars privately rather than through an autostand tendentialy sell older cars, and thus ask for lower prices. The machine learning models discussed next will be able to provide more insights on what actually determines the car prices.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
