@@ -16,14 +16,25 @@ This figure shows the outcome of one of the best models:
 
 ## Table of contents
 - [The car data](#the-car-data)
-- [Machine learning model performance](#machine-learning-model-performance)
+- [What sets the car prices?](#what-sets-the-car-prices?)
 - [Code overview](#code-overview)
 
 ## The car data
 
-This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features).
+This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
+
+1. The average prices decrease with the number of kilometers, and increase with engine power and car year (more recent, more expensive).
+2. Cars with manual transmission, petrol as fuel (benzin) and sold by private sellers are also cheaper on average. 
 
 <img src="fig_store/fig_data_stats_counts.png">
+
+The next figure shows the correlation matrix, which displays the same correlations between car price and other features. 
+
+<img src="fig_store/fig_data_stats_correlation.png">
+
+Note however that, of course, a correlation does not imply a causation. For example, it could be that people who choose to sell their cars privately rather than through an autostand tendentialy sell older cars, and thus ask for lower prices. Next, we will use the machine learning models to gain more insights on what actually determines the car prices.
+
+## 
 
 ## Code overview
 
