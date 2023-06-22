@@ -61,7 +61,7 @@ This figure shows the importance of the car features in setting the final price.
 
 A few takeaway points:
 1. All models agree that (i) engire power, (ii) car year and (iii) number of kilometers are the most important car features.
-2. The linear regression (blue) and k nearest neighbors models (green) predict negligible importance for all other car features. The
+2. The linear regression (blue) and k nearest neighbors models (green) predict negligible importance for all other car features.
 3. The model that performs the best, the random forest, predicts a small but non-negligible importance of the types of fuel, transmission, brand and chassis.
 
 In the decision tree and random forest panels, we compare also against the feature importances estimated directly by the sklearn functions based in the Gini impurity (shown as the dotted black lines. they agree noticeably well with our own feature importance estimates (just with the exception that the decision tree inpurity-based importance for car transmission is interestingly ranked high).
