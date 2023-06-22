@@ -12,7 +12,7 @@ This figure shows the outcome of one of the best models:
 
 1. the engine power is the most important feature in setting the car price, followed by the car year and the number of kilometers. 
 2. The fuel type (gas), type of transmission, car brand and chassis type have a smaller, but non-negligible importance.
-3. The warranty type, city, number of owners and seller type (handler vs. private) play a negligible role.
+3. The warranty type, city, number of owners and seller type (autostand vs. private) play a negligible role.
 
 <img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
 
