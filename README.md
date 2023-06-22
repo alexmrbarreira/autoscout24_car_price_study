@@ -73,7 +73,7 @@ The data is saved in the file *data_store/data_store/data_cars_autoscout24.csv*.
 #### prepare_training_data.py
 This files prepares the car data for training:
 1. it deals with missing values;
-2. engineers some of the features;
+2. does feature engineering;
 3. encodes categorical variables;
 4. splits into training/validation data (80/20\%).
 
