@@ -81,7 +81,7 @@ This files prepares the car data for training:
 This file simply plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
 
 #### train_regression_models.py
-This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. It also compares their performance in truth vs. predicted price plots.
+This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. It also compares their performance in truth vs. predicted price plots. Executing *python  train_regression_models.py* will train the models and produce a figure with the model comparison.
 
 The snippet with the model definitions:
 
@@ -122,6 +122,47 @@ model_5.fit(train_features, train_labels)
 pickle.dump(model_5, open('model_store/model_5_MLperceptron.pickle', 'wb'))
 ```
 
+#### quantify_feature_importance.py
 
+This file quantifies the importance of each car feature by randomizing their entries in the data set and measuring the loss in accuracy of the predictions. The greater the accuracy loss, the more important the feature. Executing *python quantify_feature_importance.py* will do the feature importance estimation and produce a plot showing it for all the models.
 
+The code snippet of the feature importance estimation:
+
+```ruby
+
+def get_feature_importance(model, data_features, data_labels):
+    N_data     = len(data_features[:,0])
+    N_features = len(data_features[0,:])
+    # Default model prediction and accuracy
+    prediction_default = model.predict(data_features)
+    accuracy_default   = np.mean( abs((prediction_default - data_labels)/data_labels) )
+    # Measure feature importance by size of accuracy loss after randomization
+    feature_importance = np.zeros(N_features)
+    for j in range(N_features):
+        data_features_now = np.copy(data_features)
+        np.random.shuffle(data_features_now[:,j])
+        prediction_now = model.predict(data_features_now)
+        accuracy_now   = np.mean( abs((prediction_now - data_labels)/data_labels) )
+        feature_importance[j] = accuracy_default/accuracy_now
+    return feature_importance, accuracy_default
+
+def get_average_feature_importance(model, data_features, data_labels, N_random):
+    N_features                 = len(data_features[0,:])
+    average_feature_importance = np.zeros(N_features)
+    for i in range(N_random):
+        average_feature_importance += get_feature_importance(model, data_features, data_labels)[0]
+    return average_feature_importance/N_random, get_feature_importance(model, data_features, data_labels)[1]
+
+model_list  = [     model_1     ,       model_2      ,      model_3   ,      model_4   ,         model_5      ]
+model_names = ['Lin. regression', 'k near neighbors' , 'Decision tree', 'Random forest', 'Multi-layer percep.']
+Nmodels     = len(model_list)
+
+N_random = 10
+feature_importance_train_list = []
+feature_importance_valid_list = []
+for i in range(Nmodels):
+    print ('Estimating feature importance by randomization for', model_names[i])
+    feature_importance_train_list.append( get_average_feature_importance(model_list[i], train_features, train_labels, N_random)[0] )
+    feature_importance_valid_list.append( get_average_feature_importance(model_list[i], valid_features, valid_labels, N_random)[0] )
+```
 
