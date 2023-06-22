@@ -33,7 +33,9 @@ To run the whole pipeline, execute as follows:
 *python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_data_stats.py; python train_regression_models.py; python plot_feature_importance.py*
 
 #### parameters.py
+This file defines the car search parameters. Edit it to choose which brands, chassis types and cities to browse on autoscout24.de.
 
+Other global functions, parameters and library imports are also specified here. This file is called by all other files.
 
 
 
