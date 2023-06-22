@@ -54,6 +54,7 @@ def prepare_data(filename):
     df['Gas'].loc[df['Gas'].str.contains('Erdgas'        , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('Autogas'       , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('Ethanol'       , na=False)] = 'Other'
+    df['Gas'].loc[df['Gas'].str.contains('Wasserstoff'   , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('Sonstige'      , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('-'             , na=False)] = 'Other'
     print ('In Gas, grouped all non-diesel/benzin into Other (dominated by electric and hybrids)')
@@ -90,6 +91,7 @@ def prepare_data(filename):
 print ('')
 print ('Preparing data ...')
 df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
+#df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24_monday.csv')
 
 # Save encoders for later use in transformations
 pickle.dump(le_city        , open('encoder_store/le_city.pkl'        , 'wb'))
@@ -122,5 +124,4 @@ print (df_valid.shape[0])
 
 df_train.to_csv('data_store/data_prepared_train.csv', index = False)
 df_valid.to_csv('data_store/data_prepared_valid.csv', index = False)
-
 

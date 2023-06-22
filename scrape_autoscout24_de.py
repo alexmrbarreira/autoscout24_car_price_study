@@ -95,9 +95,9 @@ def save_car_data(filename, cars_URL, city, brand, body):
                 if(basics_attrs[i].text == 'Garantie'):
                     warranty = basics_value[i].text
 
-            #print ([city[0], brand, body_names[int(body)-1], price, km, power, year, gas, trans, seller, n_owners, warranty, url])
+            #print ([price, city[0], brand, body_names[int(body)-1], km, power, year, gas, trans, seller, n_owners, warranty, url])
 
-            cars_data.append([city[0], brand, body_names[int(body)-1], price, km, power, year, gas, trans, seller, n_owners, warranty, url])
+            cars_data.append([price, city[0], brand, body_names[int(body)-1], km, power, year, gas, trans, seller, n_owners, warranty, url])
 
         except Exception as e:
             fail_counter += 1
@@ -110,7 +110,7 @@ def save_car_data(filename, cars_URL, city, brand, body):
     # Save to file
     print ('. Failed to open', fail_counter, 'URLs')
     if (len(cars_data) > 0):
-        df = pd.DataFrame(cars_data, columns=['City', 'Brand', 'Body', 'Price[1000Eur]', '1000Km', 'Power[HP]', 'Year', 'Gas', 'Transmission', 'Seller', 'Owners', 'Warranty', 'URL'])
+        df = pd.DataFrame(cars_data, columns=['Price[1000Eur]', 'City', 'Brand', 'Body', '1000Km', 'Power[HP]', 'Year', 'Gas', 'Transmission', 'Seller', 'Owners', 'Warranty', 'URL'])
         if os.path.exists(filename):
             df.to_csv(filename, mode = 'a', index = False, header = False)
         else:

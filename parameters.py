@@ -18,11 +18,11 @@ min_year  = '2013'
 
 # Body types
 body_names = ['kleinwagen', 'cabrio', 'coupe', 'suv', 'kombi', 'limousine', 'van', 'transporter', 'sonstige']
-body_types = [    '1'     ,                             '5'  ,      '6'   ]
+body_types = [    '1'     ,                     '4' ,   '5'  ,      '6'   ]
 
-# Car brands (could also refine search by loading only certain models per brand)
-#brand_list = ['audi', 'bmw', 'ford', 'mercedes', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
-brand_list = [         'bmw',                             'skoda',           'volkswagen']
+# Car brands 
+brand_list = ['audi', 'bmw', 'ford', 'mercedes', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
+#brand_list = [         'bmw',                             'skoda',           'volkswagen']
 
 # The autoscout24 website does not show more than 20 pages (and ~20 cars per page, so search is complete only if filters result in about 400 cars)
 # To circumvent this, the search loops over sufficiently small price bins that there are never > 400 cars inside each; this guarantees we catch practically all cars

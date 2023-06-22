@@ -63,7 +63,7 @@ for i in range(Nmodels):
     feature_importance_valid_list.append( get_average_feature_importance(model_list[i], valid_features, valid_labels, N_random)[0] )
 
 # ================================================================
-# Make predicted vs. true plot
+# Make feature importance plot
 # ================================================================
 
 fig0 = plt.figure(0, figsize=(19., 12.))
@@ -116,8 +116,26 @@ for i in range(Nmodels):
         plt.plot(xx, normalized_inpurity_based_feature_importance, linewidth = 2., linestyle = 'dotted', c = 'k', label = 'Inpurity-\nbased')
         params = {'legend.fontsize': legend_font-4}; plt.rcParams.update(params); plt.legend(loc = 'center right', ncol = 1)
 
-
 fig0.savefig('fig_store/fig_feature_importances_by_randomization.png')
 
-#plt.show()
+# ================================================================
+# Make feature importance plot just for the random forest (best)
+# ================================================================
+
+fig1 = plt.figure(1, figsize=(11., 9.))
+fig1.subplots_adjust(left=0.08, bottom=0.16, right=0.99, top=0.94, wspace=0.25, hspace=0.40)
+
+i = 3
+fig1.add_subplot(1, 1, 1)
+xx = range(N_featu)
+plt.title('Which car features play a dominant role in the price?', fontsize = title_font+4)
+plt.scatter(xx, 1./feature_importance_valid_list[i][args_order], color = model_c[i], s = 80, marker = 'o')
+plt.plot(xx, 1./feature_importance_valid_list[i][args_order], linewidth = 2, c = model_c[i], linestyle = 'dashed')
+plt.xticks(xx, [cols[i] for i in args_order], fontsize = label_font, rotation=45.)
+plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize+6)
+plt.ylabel('Car feature importance', fontsize = label_font+6)
+
+fig1.savefig('fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png')
+
+plt.show()
 

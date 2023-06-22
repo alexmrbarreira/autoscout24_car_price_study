@@ -10,7 +10,7 @@ df_total = pd.concat([df_train, df_valid])
 cols     = df_total.columns.tolist()
 
 le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = get_encoders()
-list_of_le = [le_city, le_brand, le_body, None, None, None, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty]
+list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty]
 
 #df = pd.read_csv('data_store/data_cars_autoscout24.csv')
 #a = df['URL'].loc[df['Owners'] > 4]
@@ -65,7 +65,7 @@ def plot_hist(df, feature):
 for i in range(len(cols)):
     fig0.add_subplot(3,4,i+1)
     # Add data
-    if ( (i==3) or (i==4) or (i==5) ):
+    if ( (i==0) or (i==4) or (i==5) ):
         plot_hist(df_total, cols[i])
     else:
         plot_bincount(df_total, cols[i], list_of_le[i])

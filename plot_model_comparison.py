@@ -65,9 +65,9 @@ for i in range(Nmodels):
     plt.xlim(minp_inplot, maxp_inplot)
     plt.ylim(minp_inplot, maxp_inplot)
     plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize+10)
-    plt.annotate(model_names[i]                           , xy = (0.05, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
-    plt.annotate(r'MSE: '+str(round(mse_train_list[i], 1)), xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
-    plt.annotate(r'MPE: '+str(round(mpe_train_list[i], 2)), xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
+    plt.annotate(model_names[i]                                      , xy = (0.05, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
+    plt.annotate(r'MSE: '+str(round(mse_train_list[i], 1))           , xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
+    plt.annotate(r'MPE: '+str(round(mpe_train_list[i]*100., 1))+r'\%', xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     if(i==0): plt.ylabel('Predicted price [1000 Eur]', fontsize = label_font)
     if(i==2): plt.title('Training performance', fontsize = title_font+4)
 
@@ -81,9 +81,9 @@ for i in range(Nmodels):
     plt.ylim(minp_inplot, maxp_inplot)
     plt.xlabel('True price [1000 Eur]', fontsize = label_font)
     plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize+10)
-    plt.annotate(model_names[i]                           , xy = (0.05, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
-    plt.annotate(r'MSE: '+str(round(mse_valid_list[i], 1)), xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
-    plt.annotate(r'MPE: '+str(round(mpe_valid_list[i], 2)), xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
+    plt.annotate(model_names[i]                                      , xy = (0.05, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
+    plt.annotate(r'MSE: '+str(round(mse_valid_list[i], 1))           , xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
+    plt.annotate(r'MPE: '+str(round(mpe_valid_list[i]*100., 1))+r'\%', xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     if(i==0): plt.ylabel('Predicted price [1000 Eur]', fontsize = label_font)
     if(i==2): plt.title('Validation performance', fontsize = title_font+4)
 
@@ -91,22 +91,4 @@ for i in range(Nmodels):
 fig0.savefig('fig_store/fig_model_comparison.png')
 
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
