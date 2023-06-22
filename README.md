@@ -16,7 +16,7 @@ This figure shows the outcome of one of the best models:
 
 ## Table of contents
 - [The car data](#the-car-data)
-- [What sets the car prices?](#what-sets-the-car-prices~?)
+- [What sets the car prices?](#what-sets-the-car-prices)
 - [Code overview](#code-overview)
 
 ## The car data
@@ -34,7 +34,7 @@ The next figure shows the correlation matrix, which displays the same correlatio
 
 Note however that, of course, a correlation does not imply a causation. For example, it could be that people who choose to sell their cars privately rather than through an autostand tendentialy sell older cars, and thus ask for lower prices. Next, we will use the machine learning models to gain more insights on what actually determines the car prices.
 
-## What sets the car prices ?
+## What sets the car prices
 
 ## Code overview
 
