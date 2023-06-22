@@ -49,10 +49,10 @@ This figure compares the accuracy of 5 regression models in predicting car price
 1. a linear regression model,
 2. a k nearest neighbors model,
 3. a decision tree,
-4. a random forest and,
+4. a random forest,
 5. a multi-layer perceptron (dense neural network). 
 
-The mean squared errors (MSE) and mean percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
+The mean squared errors (MSE) and mean absolute percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
 
 <img src="fig_store/fig_model_comparison.png">
 
