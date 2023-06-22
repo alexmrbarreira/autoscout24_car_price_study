@@ -7,5 +7,6 @@ These python scripts execute two main tasks:
 2. train a series of machine learning models to predict car prices and study the relative importance of different car features to the final price.
 
 
+<img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="200" height="200" />
 
 ![](fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png =100x20)
