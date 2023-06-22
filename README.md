@@ -1,4 +1,6 @@
 # autoscout24_prices_study
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 
 A study of what determines the price of used cars on sale in the german website [autoscout24.de](https://www.autoscout24.de/).
 
@@ -14,12 +16,16 @@ This figure shows the outcome of one of the best models:
 
 <img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 ## Table of contents
 - [The car data](#the-car-data)
 - [Machine learning model predictions](#machine-learning-model-predictions)
 - [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
 - [Code overview](#code-overview)
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 ## The car data
 
 This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
@@ -35,6 +41,8 @@ The next figure shows the correlation matrix, which displays the same correlatio
 
 Note however that, of course, a correlation does not imply a causation. For example, it could be that people who choose to sell their cars privately rather than through an autostand tendentialy sell older cars, and thus ask for lower prices. Next, we will use the machine learning models to gain more insights on what actually determines the car prices.
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 ## Machine learning model predictions
 
 This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are (i) a linear regression model, (ii) a k nearest neighbors model, (iii) a decision tree, (iv) a random forest and (v) a multi-layer perceptron (dense neural network). The mean squared errors (MSE) and mean percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
@@ -43,14 +51,21 @@ This figure compares the accuracy of 5 regression models in predicting car price
 
 The random forest model (an ensemble of 25 decision trees) performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 ## Feature importances from the machine learning models
+
+This figure shows the importance of the car features in setting the final price. For each model and data set, the feature importances are computed by measuring the loss in accuracy after randomizing each data entries. For example, to measure the importance of the car year, we (i) randomize the year values of the cars, (ii) predict the resulting prices, and (iii) determine the importance as the ratio of the mean percentage error before and after randomization.
 
 <img src="fig_store/fig_feature_importances_by_randomization.png">
 
 
-
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 ## Code overview
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### Dependencies
 
 - numpy, scipy and matplotlib
@@ -62,12 +77,15 @@ To run the whole pipeline, open a terminal and execute the scripts as follows:
 ```
 python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_data_stats.py; python train_regression_models.py; python plot_feature_importance.py
 ```
-
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### parameters.py
 This file defines the car search parameters. Edit it to choose which brands, chassis types and cities to browse on autoscout24.de.
 
 Other global functions, parameters and library imports are also specified here. This file is called by all other files.
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### scrape_autoscout24_de.py
 This file does the autoscout24.de scraping. The main search loop is:
 
@@ -101,6 +119,8 @@ The function *get_cars_URL()* first collects all desired car URL addresses, whic
 
 The data is saved in the file *data_store/data_store/data_cars_autoscout24.csv*. The folder *data_store/* contains already data from some searches. To extract all of the data for a single city, single car brands and 4 chassis types it takes about 30m (depending on the internet speed and CPU).
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### prepare_training_data.py
 This files prepares the car data for training:
 1. it deals with missing values;
@@ -108,9 +128,13 @@ This files prepares the car data for training:
 3. encodes categorical variables;
 4. splits into training/validation data (80/20\%).
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### plot_data_stats.py
 This file simply plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### train_regression_models.py
 This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. It also compares their performance in truth vs. predicted price plots. Executing *python  train_regression_models.py* will train the models and produce a figure with the model comparison.
 
@@ -152,7 +176,8 @@ model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam',
 model_5.fit(train_features, train_labels)
 pickle.dump(model_5, open('model_store/model_5_MLperceptron.pickle', 'wb'))
 ```
-
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
 #### quantify_feature_importance.py
 
 This file quantifies the importance of each car feature by randomizing their entries in the data set and measuring the loss in accuracy of the predictions. The greater the accuracy loss, the more important the feature. Executing *python quantify_feature_importance.py* will do the feature importance estimation and produce a plot showing it for all the models.
