@@ -15,22 +15,24 @@ This figure shows the outcome of one of the best models:
 <img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
 
 ## Table of contents
-- [Dependencies](#dependencies)
-- [Code overview](#code-overview)
 - [The car data](#the-car-data)
 - [Machine learning model performance](#machine-learning-model-performance)
+- [Code overview](#code-overview)
 
-## Dependencies
+
+## Code overview
+
+#### Dependencies
 
 - numpy, scipy and matplotlib
 - pandas
 - scikit-learn
 
-## Code overview
-
 To run the whole pipeline, execute as follows:
 
-*python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_data_stats.py; python train_regression_models.py; python plot_feature_importance.py*
+```
+python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_data_stats.py; python train_regression_models.py; python plot_feature_importance.py
+```
 
 #### parameters.py
 This file defines the car search parameters. Edit it to choose which brands, chassis types and cities to browse on autoscout24.de.
