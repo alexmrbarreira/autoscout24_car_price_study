@@ -51,6 +51,9 @@ This figure compares the accuracy of 5 regression models in predicting car price
 
 The random forest model (an ensemble of 25 decision trees) performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
 
+| Lin. regression | k nearest neighbors | Decision tree | Random forest | Multi-layer perceptron | 
+| :---: | :--: | :---: | :--: | :-: | 
+
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
 ## Feature importances from the machine learning models
