@@ -81,7 +81,9 @@ This files prepares the car data for training:
 This file simply plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
 
 #### train_regression_models.py
-This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. 
+This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. It also compares their performance in truth vs. predicted price plots.
+
+The snippet with the model definitions:
 
 ```ruby
 # Linear regression
