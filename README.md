@@ -42,8 +42,7 @@ This file does the autoscout24.de scraping. From each car it extracts the follow
 
 The data is saved in the file data_store/data_store/data_cars_autoscout24.csv. The folder data_store/ contains already data from some searches. To extract all of the data for a single city, 9 car brands and 5 chassis types it takes about 4-5h (depending on the internet speed and CPU).
 
-```
-
+```ruby
 # Loop over the cities
 for city in city_list:
     print ('Doing city', city[0], 'out of', [a[0] for a in city_list])
@@ -64,7 +63,6 @@ for city in city_list:
             # Get and save car data from URLs
             print ('            Getting car data ... ')
             cars_data = save_car_data(filename, cars_URL, city, brand, body)
-
 ```
 
 
