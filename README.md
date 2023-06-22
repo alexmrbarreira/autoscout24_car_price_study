@@ -65,7 +65,8 @@ for city in city_list:
 
 The function get_cars_URL() fir collects all desired car URL addresses, which the function save_car_data() then scrapes to extract the car properties. The car properties are:
 
-| price | city | brand | body | km | power | year | fuel | transmission | seller | owners | warranty type|
+| price | city | brand | body | km  | power | year | fuel | transmission | seller | owners | warranty type |
+| :---: | :--: | :---: | :--: | :-: | :---: | :--: | :--: | :---------:  | :----: | :----: | :-----------: |
 
 The data is saved in the file data_store/data_store/data_cars_autoscout24.csv. The folder data_store/ contains already data from some searches. To extract all of the data for a single city, 9 car brands and 5 chassis types it takes about 4-5h (depending on the internet speed and CPU).
 
