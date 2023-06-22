@@ -44,7 +44,26 @@ The data is saved in the file data_store/data_store/data_cars_autoscout24.csv. T
 
 ```
 
-code
+# Loop over the cities
+for city in city_list:
+    print ('Doing city', city[0], 'out of', [a[0] for a in city_list])
+
+    # Loop over the brands
+    for brand in brand_list: # loop over brands
+        print ('    Doing brand', brand, 'out of', brand_list)
+
+        # Loop over the body types
+        for body in body_types: # loop over body types
+            print ('        Doing body type', body, 'out of', body_types)
+
+            # Get car URLs
+            print ('            Getting car URLs ... ')
+            cars_URL = get_cars_URL(city, brand, body)
+            print ('            ... done! Number of URLs:', len(cars_URL))
+
+            # Get and save car data from URLs
+            print ('            Getting car data ... ')
+            cars_data = save_car_data(filename, cars_URL, city, brand, body)
 
 ```
 
