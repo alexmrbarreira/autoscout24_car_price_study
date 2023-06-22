@@ -77,5 +77,47 @@ This files prepares the car data for training:
 3. encodes categorical variables;
 4. splits into training/validation data (80/20\%).
 
+#### plot_data_stats.py
+This file simply plots a few basic data statistics: the number of cars as a function of car features and the correlation between car features.
+
+#### train_regression_models.py
+This file defines, trains and saves different regression models: (i) linear regression, (ii) k nearest neighbors, (iii) decision tree, (iv) random forest and (v) multi-layer perceptron. 
+
+```ruby
+# Linear regression
+print ('Fitting linear regression model ... ')
+model_1 = linear_model.LinearRegression(fit_intercept=True)
+model_1.fit(train_features, train_labels)
+pickle.dump(model_1, open('model_store/model_1_lin_regression.pickle', 'wb'))
+
+# K Nearest Neighbors
+knn = 11
+print ('Fitting k nearest neighbors model ( k = ',knn,') ... ')
+model_2 = neighbors.KNeighborsRegressor(n_neighbors=knn)
+model_2.fit(train_features, train_labels)
+pickle.dump(model_2, open('model_store/model_2_kNearestNeighbors.pickle', 'wb'))
+
+# Decision tree
+print ('Fitting decision tree model ... ')
+model_3 = tree.DecisionTreeRegressor(splitter='random')
+model_3.fit(train_features, train_labels)
+pickle.dump(model_3, open('model_store/model_3_decision_tree.pickle', 'wb'))
+
+# Random forest
+n_trees = 25
+print ('Fitting random forest model ( Ntrees = ',n_trees,') ... ')
+model_4 = ensemble.RandomForestRegressor(n_estimators=n_trees)
+model_4.fit(train_features, train_labels)
+pickle.dump(model_4, open('model_store/model_4_random_forest.pickle', 'wb'))
+
+# Multi-layer perceptron (a dense neural network)
+layers = np.array([32, 32, 32])
+print ('Fitting multi-layer perceptron model ( layers=',layers,') ... ')
+model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.01, shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
+model_5.fit(train_features, train_labels)
+pickle.dump(model_5, open('model_store/model_5_MLperceptron.pickle', 'wb'))
+```
+
+
 
 
