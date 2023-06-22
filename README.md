@@ -47,16 +47,16 @@ Note however that, of course, a correlation does not imply a causation. For exam
 
 This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are 
 1. a linear regression model,
-2. a k nearest neighbors model,
+2. a k nearest neighbors model (11 neighbors),
 3. a decision tree,
-4. a random forest,
-5. a multi-layer perceptron (dense neural network). 
+4. a random forest (ensemble of 25 trees),
+5. a multi-layer perceptron (dense neural network with 3 32-node hidden layers). 
 
 The mean squared errors (MSE) and mean absolute percentage errors (MPE) are listed in each panel. The upper panels are for the training set and the lower panels for the validation set.
 
 <img src="fig_store/fig_model_comparison.png">
 
-The random forest model (an ensemble of 25 decision trees) performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
+The random forest model performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
 
 The mean absolute percentage errors on the validation sets are:
 
