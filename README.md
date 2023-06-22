@@ -35,7 +35,7 @@ This figure shows the car feature distribution (green histograms). The orange li
 
 <img src="fig_store/fig_data_stats_counts.png">
 
-The correlation matrix shown next displays some of the main takeaway points: 
+The correlation matrix shown next displays some of the main takeaway points.
 
 <img src="fig_store/fig_data_stats_correlation.png" width="600" height=auto/>
 
