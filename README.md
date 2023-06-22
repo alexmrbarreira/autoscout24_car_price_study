@@ -13,3 +13,15 @@ This figure shows the outcome of one of the best models:
 3. The warranty type, city, number of owners and seller type (handler vs. private) play a negligible role.
 
 <img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
+
+## Table of contents
+- [Dependencies](#dependencies)
+- [Code overview](#code-overview)
+- [The car data](#the-car-data)
+- [Machine learning model performance](#machine-learning-model-performance)
+
+## Dependencies
+
+- numpy, scipy and matplotlib
+- pandas
+- scikit-learn
