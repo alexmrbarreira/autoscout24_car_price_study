@@ -12,4 +12,4 @@ This figure shows the outcome of one of the best models. It shows that:
 2. Beyond that, the fuel type (diesel, petrol, eletric), type of transmission (auto vs. manual), car brand and chassis type have also a visible importance.
 3. The warranty type, city, number of owners and seller type (handler vs. private) play a negligible role.
 
-<img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" class="center" width="600" height=auto/>
+<img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
