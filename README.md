@@ -113,7 +113,9 @@ pickle.dump(model_4, open('model_store/model_4_random_forest.pickle', 'wb'))
 # Multi-layer perceptron (a dense neural network)
 layers = np.array([32, 32, 32])
 print ('Fitting multi-layer perceptron model ( layers=',layers,') ... ')
-model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.01, shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
+model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', 
+                                      batch_size='auto', learning_rate_init=0.01, 
+                                      shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
 model_5.fit(train_features, train_labels)
 pickle.dump(model_5, open('model_store/model_5_MLperceptron.pickle', 'wb'))
 ```
