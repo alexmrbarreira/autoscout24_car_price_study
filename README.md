@@ -16,7 +16,7 @@ This figure shows the outcome of one of the best models:
 
 ## Table of contents
 - [The car data](#the-car-data)
-- [What sets the car prices?](#what-sets-the-car-prices)
+- [Machine learning model predictions](#machine-learning-model-predictions)
 - [Code overview](#code-overview)
 
 ## The car data
