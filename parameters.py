@@ -86,19 +86,19 @@ def get_encoders():
     le_warranty     = pickle.load(open('encoder_store/le_warranty.pkl', 'rb'))
     return le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty
 
-# Function that scales the features and labels by their maxima
-def scale_data(train_features, valid_features, train_labels, valid_labels):
-    new_train_features = np.zeros(np.shape(train_features))
-    new_valid_features = np.zeros(np.shape(valid_features))
-    new_train_labels = np.zeros(np.shape(train_labels))
-    new_valid_labels = np.zeros(np.shape(valid_labels))
-    N_featu = len(train_features[0,:])
-    for i in range(N_featu):
-        new_train_features[:,i] = train_features[:,i]/max(train_features[:,i])
-        new_valid_features[:,i] = valid_features[:,i]/max(valid_features[:,i])
-    new_train_labels = train_labels/max(train_labels)
-    new_valid_labels = valid_labels/max(valid_labels)
-    return new_train_features, new_valid_features, new_train_labels, new_valid_labels
+## Function that scales the features and labels by their maxima
+#def scale_data(train_features, valid_features, train_labels, valid_labels):
+#    new_train_features = np.zeros(np.shape(train_features))
+#    new_valid_features = np.zeros(np.shape(valid_features))
+#    new_train_labels = np.zeros(np.shape(train_labels))
+#    new_valid_labels = np.zeros(np.shape(valid_labels))
+#    N_featu = len(train_features[0,:])
+#    for i in range(N_featu):
+#        new_train_features[:,i] = train_features[:,i]/max(train_features[:,i])
+#        new_valid_features[:,i] = valid_features[:,i]/max(valid_features[:,i])
+#    new_train_labels = train_labels/max(train_labels)
+#    new_valid_labels = valid_labels/max(valid_labels)
+#    return new_train_features, new_valid_features, new_train_labels, new_valid_labels
 
 # ======================================================= 
 # Basic ploting parameters 
