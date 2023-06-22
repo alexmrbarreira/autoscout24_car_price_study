@@ -140,7 +140,7 @@ The function *get_cars_URL()* first collects all desired car URL addresses, whic
 | price | city | brand | body | km  | power | year | fuel | transmission | seller | owners | warranty type |
 | :---: | :--: | :---: | :--: | :-: | :---: | :--: | :--: | :---------:  | :----: | :----: | :-----------: |
 
-The data is saved in the file *data_store/data_cars_autoscout24.csv*. The folder *data_store/* contains already data from some searches. To extract all of the data for a single city, single car brand and 4 chassis types it takes about 30m (depending on the internet speed and CPU).
+The data is saved in the file *data_store/data_cars_autoscout24.csv*. The folder *data_store/* contains already data from some searches. To extract the data for a single city, single car brand and 4 chassis types it takes about 30m (depending on the internet speed and CPU).
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
