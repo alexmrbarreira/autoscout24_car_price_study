@@ -92,6 +92,7 @@ In the decision tree and random forest panels, we compare also against the featu
 
 - numpy, scipy and matplotlib
 - pandas
+- bs4, python web scraping library
 - scikit-learn
 
 To run the whole pipeline, open a terminal and execute the scripts as follows:
