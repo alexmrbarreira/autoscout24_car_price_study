@@ -17,6 +17,7 @@ This figure shows the outcome of one of the best models:
 ## Table of contents
 - [The car data](#the-car-data)
 - [Machine learning model predictions](#machine-learning-model-predictions)
+- [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
 - [Code overview](#code-overview)
 
 ## The car data
@@ -41,6 +42,11 @@ This figure compares the accuracy of 5 regression models in predicting car price
 <img src="fig_store/fig_model_comparison.png">
 
 The random forest model (an ensemble of 25 decision trees) performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs similarly to the other models in the validation set.
+
+## Feature importances from the machine learning models
+
+<img src="fig_store/fig_feature_importances_by_randomization.png">
+
 
 
 ## Code overview
