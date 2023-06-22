@@ -105,7 +105,7 @@ python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_da
 #### parameters.py
 This file defines the car search parameters. Edit it to choose which brands, chassis types and cities to browse on autoscout24.de.
 
-Other global functions, parameters and library imports are also specified here. This file is called by all other files.
+Other global functions, parameters and library imports are also specified here. This file is imported by all other files.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
