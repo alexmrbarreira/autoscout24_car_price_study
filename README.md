@@ -21,9 +21,7 @@ This figure shows the outcome of one of the best models:
 
 ## The car data
 
-This figure shows the 
-
-![](fig_store/fig_data_stats_counts.png)
+This figure shows the number of cars as a function of their features (green bars). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note it does not show the actual price, just how it varies on average across features).
 
 <img src="fig_store/fig_data_stats_counts.png">
 
