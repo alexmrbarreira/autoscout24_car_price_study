@@ -36,6 +36,11 @@ Note however that, of course, a correlation does not imply a causation. For exam
 
 ## Machine learning model predictions
 
+This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are (i) a linear regression model, (ii) a k nearest neighbors model, (iii) a decision tree, (iv) a random forest and (v) a multi-layer perceptron (dense neural network).
+
+<img src="fig_store/fig_data_stats_counts.png">
+
+
 ## Code overview
 
 #### Dependencies
