@@ -32,4 +32,8 @@ To run the whole pipeline, execute as follows:
 
 *python scrape_autoscout24_de.py; python prepare_training_data.py; python plot_data_stats.py; python train_regression_models.py; python plot_feature_importance.py*
 
+#### parameters.py
+
+
+
 
