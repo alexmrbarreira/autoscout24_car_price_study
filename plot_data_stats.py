@@ -1,5 +1,9 @@
 from parameters import *
 
+# This script plots a few basic data statistics:
+#   The distribution of cars as a function of car features
+#   The covariance between the car features
+
 # ================================================================ 
 # Load data 
 # ================================================================ 

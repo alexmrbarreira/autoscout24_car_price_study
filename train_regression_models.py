@@ -1,5 +1,15 @@
 from parameters import *
 
+# This file defines and trains a series of ML regression models to predict the car prices
+#   It fits and compares the performance of the following regression models:
+#   model_1 : linear regression
+#   model_2 : k nearest neighbors
+#   model_3 : decision tree
+#   model_4 : random forest
+#   model_5 : multi-layer perceptron (neural network)
+#
+#   The models are saved in model_store/.
+
 # ================================================================ 
 # Load data 
 # ================================================================ 

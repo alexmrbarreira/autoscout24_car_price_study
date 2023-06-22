@@ -17,10 +17,12 @@ def prepare_data(filename):
     df      = pd.read_csv(filename)
     df_size = df.shape[0]
 
+    print ('')
     print ('The original data set has the following columns:')
     print (df.columns.tolist())
 
     nan_cols = df.columns[df.isnull().any()].tolist()
+    print ('')
     print ('The followingy columns have NaN:')
     print (nan_cols)
 
@@ -28,23 +30,27 @@ def prepare_data(filename):
     n0 = df.shape[0]
     df = df.dropna(subset=['Price[1000Eur]'])
     n1 = df.shape[0]
+    print ('')
     print ('Removed', n0-n1, 'rows that had price=nan')
 
     # Keep only cars with < 300,000km (to remove severe outliers (e.g.~taxis))
     n0 = df.shape[0]
     df = df.loc[df['1000Km'] < 300.]
     n1 = df.shape[0]
+    print ('')
     print ('Removed', n0-n1, 'rows with 1000Km > 300')
 
     # Replace nan in Owners with most common, and Warranty with 'Nein'
     most_common_owners = df['Owners'].mode()[0]
     df['Owners']       = df['Owners'].fillna(most_common_owners)
     df['Warranty']     = df['Warranty'].fillna('Nein')
+    print ('')
     print ('In Owners, replaced nan with most common')
     
     # In Warranty: if it specifies months assume warranty (1), otherwise assume no warranty (0)
     #df['Warranty'].loc[df['Warranty'] == 'Ja']   = 'Nein'
     df['Warranty'].loc[df['Warranty'].str.contains('Monate', na=False)] = 'Ja-exp'
+    print ('')
     print ('In Warranty, replaced month specification with "Ja-exp"')
 
     # In Gas, group all non diesel/benzin into Other (dominated by electric/hybrid)
@@ -57,6 +63,7 @@ def prepare_data(filename):
     df['Gas'].loc[df['Gas'].str.contains('Wasserstoff'   , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('Sonstige'      , na=False)] = 'Other'
     df['Gas'].loc[df['Gas'].str.contains('-'             , na=False)] = 'Other'
+    print ('')
     print ('In Gas, grouped all non-diesel/benzin into Other (dominated by electric and hybrids)')
 
     # In Transmission, if km are specified assume it is elektro/hybrid and so automatik 
@@ -65,6 +72,7 @@ def prepare_data(filename):
     df['Transmission'].loc[df['Transmission'].str.contains('Halbautomatik', na=False)] = 'Automatik'
 
     # Label encode categorial variables
+    print ('')
     le_city         = label_encode_variable(df, 'City') 
     le_brand        = label_encode_variable(df, 'Brand') 
     le_body         = label_encode_variable(df, 'Body') 
@@ -78,11 +86,13 @@ def prepare_data(filename):
     # Drop URL column
     df              = df.drop(['URL'], axis = 1)
 
+    print ('')
     print ('The final data set has the following columns:')
     print (df.columns.tolist())
 
     nan_cols = df.columns[df.isnull().any()].tolist()
     if (len(nan_cols) > 0):
+        print ('')
         print ('Note the following columns still have NaN:')
         print (nan_cols)
 

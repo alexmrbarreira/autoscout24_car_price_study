@@ -18,15 +18,11 @@ min_year  = '2013'
 
 # Body types
 body_names = ['kleinwagen', 'cabrio', 'coupe', 'suv', 'kombi', 'limousine', 'van', 'transporter', 'sonstige']
+#body_types = [    '1'     ,    '2'  ,   '3'  ,  '4' ,   '5'  ,      '6'   ,  '7' ,      '8',    ,     '9'   ]
 body_types = [    '1'     ,                     '4' ,   '5'  ,      '6'   ]
 
 # Car brands 
 brand_list = ['audi', 'bmw', 'ford', 'mercedes', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
-#brand_list = [         'bmw',                             'skoda',           'volkswagen']
-
-# The autoscout24 website does not show more than 20 pages (and ~20 cars per page, so search is complete only if filters result in about 400 cars)
-# To circumvent this, the search loops over sufficiently small price bins that there are never > 400 cars inside each; this guarantees we catch practically all cars
-price_bin_edges = ['500', '5000', '10000', '15000', '20000', '25000', '30000', '40000', '50000', '75000', '100000']
 
 # German state capitals
 search_radius = '100' #1000 x km
@@ -49,6 +45,11 @@ search_radius = '100' #1000 x km
 
 city_list = [ ['münchen'    , 'lat=48.13913&lon=11.58022'] ,
               ['berlin'     , 'lat=52.52343&lon=13.41144'] ]
+
+# The autoscout24 website does not show more than 20 pages (and ~20 cars per page, so search is complete only if filters result in about 400 cars).
+# To circumvent this, the search loops over sufficiently small price bins that there are never > 400 cars inside each.
+# This catches all car prices; modify this only if want a restricted price range (though that selection can be done at post-processing).
+price_bin_edges = ['500', '5000', '10000', '15000', '20000', '25000', '30000', '40000', '50000', '75000', '100000']
 
 # ======================================================= 
 # Function that load stuff
