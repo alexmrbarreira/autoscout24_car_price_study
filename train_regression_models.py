@@ -35,14 +35,14 @@ model_3.fit(train_features, train_labels)
 pickle.dump(model_3, open('model_store/model_3_decision_tree.pickle', 'wb'))
 
 # Random forest
-n_trees = 5
+n_trees = 25
 print ('Fitting random forest model ( Ntrees = ',n_trees,') ... ')
 model_4 = ensemble.RandomForestRegressor(n_estimators=n_trees)
 model_4.fit(train_features, train_labels)
 pickle.dump(model_4, open('model_store/model_4_random_forest.pickle', 'wb'))
 
 # Multi-layer perceptron (a dense neural network)
-layers = np.array([64, 64, 64])
+layers = np.array([32, 32, 32])
 print ('Fitting multi-layer perceptron model ( layers=',layers,') ... ')
 model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.01, shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
 model_5.fit(train_features, train_labels)
