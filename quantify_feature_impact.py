@@ -4,7 +4,7 @@ from parameters import *
 verbose = False
 
 # ================================================================ 
-# Load data 
+# Load data and label encoders
 # ================================================================ 
 
 df_train, df_valid, train_features, valid_features, train_labels, valid_labels, N_train, N_valid, N_featu = get_train_valid_data()
@@ -46,19 +46,6 @@ model = model_list[imodel]
 # car prices that don't have the feature if they are given that feature.
 # E.g. What's the percentage change in prices of all manual cars, if they are assumed automatic
 
-#   0        1       2        3         4           5       6          7            8          9         10
-#['City', 'Brand', 'Body', '1000Km', 'Power[HP]', 'Year', 'Gas', 'Transmission', 'Seller', 'Owners', 'Warranty']
-
-#Label encoding of City: ['berlin' 'münchen'] ----> [0 1]
-#Label encoding of Brand: ['audi' 'bmw' 'ford' 'mercedes' 'opel' 'skoda' 'toyota' 'volkswagen' 'volvo'] ----> [0 1 2 3 4 5 6 7 8]
-#Label encoding of Body: ['kleinwagen' 'kombi' 'limousine' 'suv'] ----> [0 1 2 3]
-#Label encoding of Year: [2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023] ----> [ 0  1  2  3  4  5  6  7  8  9 10]
-#Label encoding of Gas: ['Benzin' 'Diesel' 'Other'] ----> [0 1 2]
-#Label encoding of Transmission: ['Automatik' 'Schaltgetriebe'] ----> [0 1]
-#Label encoding of Seller: ['Händler' 'Privat'] ----> [0 1]
-#Label encoding of Owners: [1. 2. 3. 4. 5. 7.] ----> [0 1 2 3 4 5]
-#Label encoding of Warranty: ['Ja' 'Ja-exp' 'Nein'] ----> [0 1 2]
-
 # Type of category of each feature
 category_type = ['category', 'category', 'category', 'bins', 'bins', 'category', 'category', 'category', 'category', 'category', 'category']
 
@@ -91,6 +78,7 @@ for i in range(len(cols)):
     print ('feature = ', feature)
 
     feature_impacts_now = []
+
     # Deal with categorial variables
     if(category_type[i] == 'category'):
         le_now             = list_of_le[i]
@@ -111,7 +99,7 @@ for i in range(len(cols)):
                 print ('DF for all cars not in this category')
                 print (df_now)
             
-            # Get predicted prices assuming all of the above cars now have this catogory
+            # Get predicted prices assuming all of the above cars now have this category
             df_now[feature]    = encoded_variables[j]
             prediction_mod_now = model.predict(df_now.values)
 
