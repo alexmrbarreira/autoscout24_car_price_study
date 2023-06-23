@@ -46,6 +46,12 @@ def prepare_data(filename):
     df['Warranty']     = df['Warranty'].fillna('Nein')
     print ('')
     print ('In Owners, replaced nan with most common')
+
+    # Replace nan in Seller with most common
+    most_common_seller = df['Seller'].mode()[0]
+    df['Seller'].loc[df['Seller']=='-'] = most_common_seller
+    print ('')
+    print ('In Seller, replaced nan with most common')
     
     # In Warranty: if it specifies months assume warranty (1), otherwise assume no warranty (0)
     #df['Warranty'].loc[df['Warranty'] == 'Ja']   = 'Nein'
@@ -100,8 +106,8 @@ def prepare_data(filename):
 
 print ('')
 print ('Preparing data ...')
-df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
-#df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24_munich_berlin_allbrands_btypes1456.csv')
+#df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
+df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24_munich_berlin_allbrands_btypes1456.csv')
 
 # Save encoders for later use in transformations
 pickle.dump(le_city        , open('encoder_store/le_city.pkl'        , 'wb'))
