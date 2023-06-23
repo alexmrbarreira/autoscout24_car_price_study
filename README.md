@@ -1,6 +1,4 @@
 # autoscout24_prices_study
-<!-- ==================================================================================================================== -->
-<!-- ==================================================================================================================== -->
 
 A study of what determines the price of used cars on sale in the german website [autoscout24.de](https://www.autoscout24.de/).
 
@@ -8,21 +6,30 @@ These python scripts execute two main tasks:
 1. scrape the autoscout24.de webpages to extract car data for different german cities, car brands and body types.
 2. train machine learning models to predict car prices and study the relative importance of different car features to the final price.
 
-This figure shows the outcome of one of the best models:
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
+## Table of contents
+- [Overview of main results](#overview-of-main-results)
+- [The car data](#the-car-data)
+- [Machine learning model predictions](#machine-learning-model-predictions)
+- [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
+- [Code overview](#code-overview)
+
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
+## Overview of main results
+
+This figure shows the outcome of one of the best models (a random forest with 25 trees):
 
 1. the engine power is the most important feature in setting the car price, followed by the car year and the number of kilometers. 
 2. The fuel type (gas), type of transmission, car brand and chassis type have a smaller, but non-negligible importance.
 3. The warranty type, city, number of owners and seller type (autostand vs. private) play a negligible role.
 
-<img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
+<img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
 
-<!-- ==================================================================================================================== -->
-<!-- ==================================================================================================================== -->
-## Table of contents
-- [The car data](#the-car-data)
-- [Machine learning model predictions](#machine-learning-model-predictions)
-- [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
-- [Code overview](#code-overview)
+This figure shows the percentage impact of each feature. This is estimated by measuring the mean percentage change of the price of cars that do not have that feature, assuming they have that feature. For example, what is the impact on non-SUV car prices
+
+<img src="fig_store/fig_feature_impact_single_model.png">
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
