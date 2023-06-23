@@ -1,4 +1,4 @@
-# Predicting car prices on autoscout24.de
+# Predicting and studying car prices on autoscout24.de
 
 A study of what determines the price of used cars on sale in the german website [autoscout24.de](https://www.autoscout24.de/).
 
