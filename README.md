@@ -267,3 +267,11 @@ for i in range(Nmodels):
 
 The function *get_feature_importance()* estimates the feature importance by randomization; the function *get_average_feature_importance()* does the estimations N_random times to get an average value.
 
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
+#### quantify_feature_impact.py
+
+This file quantifies the impact of each car feature by measuring the mean percentage impact in car prices that do not have that feature, assuming that they have that feature. 
+
+Executing *python quantify_feature_impact.py* will perform this estimation and produce a plot showing it for the selected model. Select different models with the variable *imodel = (0,1,2,3,4)*.
+
