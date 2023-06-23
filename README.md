@@ -31,8 +31,13 @@ The next figure shows the percentage impact of each feature. This is estimated b
 
 1. As expected from the figure above, engine power, kilometer and year have the strongest impact
     - the price increases significantly (several tens of %) for more powerful cars, cars with less kilometers and younger cars.
-2. Next, brand, chassis type, fuel type and transmission have a smaller, but important impact (5-20%)
-    - 
+2. Next, brand, chassis type, fuel type and transmission have a smaller, but important impact (5-20%). For example:
+    - if all other cars were BMW, they would be ~7% more expensive
+    - if all other cars were SUV, they'd be 10% more expensive
+    - if all other cars were diesel, they'd be 14% more expensive
+    - if all manual cars were automatic, they'd be 14% more expensive
+3. Finally, the impact of the city, seller, number of owners and warranty is negligible ($\lesssim$ 1\%).
+
 
 <img src="fig_store/fig_feature_impact_single_model.png">
 
