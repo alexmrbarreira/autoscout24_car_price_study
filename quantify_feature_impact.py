@@ -9,10 +9,10 @@ verbose = False
 
 df_train, df_valid, train_features, valid_features, train_labels, valid_labels, N_train, N_valid, N_featu = get_train_valid_data()
 
-df_total = pd.concat([df_train, df_valid])
-df_touse = df_total.drop(['Price[1000Eur]'], axis=1)
+#df_total = pd.concat([df_train, df_valid])
+#df_touse = df_total.drop(['Price[1000Eur]'], axis=1)
 #df_touse = df_train.drop(['Price[1000Eur]'], axis=1)
-#df_touse = df_valid.drop(['Price[1000Eur]'], axis=1)
+df_touse = df_valid.drop(['Price[1000Eur]'], axis=1)
 cols     = df_touse.columns.tolist()
 
 le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = get_encoders()
@@ -220,7 +220,7 @@ for i in range(len(cols)):
     if (i==0):
         plt.annotate('Results from model: \n '+model_names[imodel], xy = (-1.25, 0.3), xycoords = 'axes fraction', fontsize = text_font+8, c = model_c[imodel])
 
-fig0.savefig('fig_store/fig_feature_impact.png')
+fig0.savefig('fig_store/fig_feature_impact_single_model.png')
 
 plt.show()
 

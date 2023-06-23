@@ -136,7 +136,7 @@ plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, righ
 plt.ylabel('Car feature importance', fontsize = label_font+6)
 plt.annotate('Results from model: \n '+model_names[i], xy = (0.4, 0.65), xycoords = 'axes fraction', fontsize = text_font+8, c = model_c[i])
 
-fig1.savefig('fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png')
+fig1.savefig('fig_store/fig_feature_importances_by_randomization_single_model.png')
 
 plt.show()
 
