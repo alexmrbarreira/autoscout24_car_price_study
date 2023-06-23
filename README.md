@@ -42,7 +42,7 @@ The main takeaways are:
     - if all other cars were SUV, they'd be 10% more expensive
     - if all other cars were diesel, they'd be 14% more expensive
     - if all manual cars were automatic, they'd be 14% more expensive
-3. Finally, the impact of the city, seller, number of owners and warranty is negligible ($\lesssim$ 1\%).
+3. Weak impact ($\lesssim$ 1\%) from city, seller, number of owners and warranty.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
