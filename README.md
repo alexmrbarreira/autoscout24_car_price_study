@@ -80,7 +80,7 @@ The mean absolute percentage errors on the validation sets are (also listed in t
 
 | Lin. regression | k nearest neighbors | Decision tree | Random forest | Multi-layer perceptron | 
 | :-------------: | :-----------------: | :-----------: | :-----------: | :--------------------: | 
-|      20.7%      |         14.2%       |      12.3%    |      9.9%     |         13.8%          | 
+|      19.1%      |         13.9%       |      12.8%    |      9.8%     |         14.3%          | 
 
 The random forest model performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs closer to the other models in the validation set.
 
