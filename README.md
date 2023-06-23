@@ -273,7 +273,7 @@ The function *get_feature_importance()* estimates the feature importance by rand
 
 This file quantifies the impact of each car feature by measuring the mean percentage impact in car prices that do not have that feature, assuming that they have that feature. 
 
-The code snippet for this estimation for the categorical variables (inspect the code for the non-categorical variables):
+The code snippet for this estimation:
 
 ```ruby
     # Deal with categorial variables
