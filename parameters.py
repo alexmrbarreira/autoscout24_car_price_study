@@ -43,8 +43,9 @@ search_radius = '100' #1000 x km
 #              ['berlin'     , 'lat=52.52343&lon=13.41144'],
 #              ['hamburg'    , 'lat=53.55725&lon=9.99597' ] ]
 
-city_list = [ ['münchen'    , 'lat=48.13913&lon=11.58022'] ,
-              ['berlin'     , 'lat=52.52343&lon=13.41144'] ]
+#city_list = [ ['münchen'    , 'lat=48.13913&lon=11.58022'] ,
+#              ['berlin'     , 'lat=52.52343&lon=13.41144'] ]
+city_list = [ ['dresden'    , 'lat=51.05099&lon=13.73363'] ]
 
 # The autoscout24 website does not show more than 20 pages (and ~20 cars per page, so search is complete only if filters result in about 400 cars).
 # To circumvent this, the search loops over sufficiently small price bins that there are never > 400 cars inside each.

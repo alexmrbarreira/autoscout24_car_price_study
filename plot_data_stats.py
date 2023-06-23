@@ -43,7 +43,11 @@ def plot_bincount(df, feature, le):
     mean_price = mean_price * max(counts) / max(mean_price) * 0.9
     plt.plot(xx, mean_price, linewidth = 2., linestyle = 'dashed', c = 'darkorange', label = 'Price trend')
     # Cosmetics
-    if( (feature=='Brand') or (feature=='Year') ):
+    if ( (feature=='Brand') ):
+        if('mercedes-benz' in xx_names):
+            xx_names[np.where(xx_names=='mercedes-benz')[0][0]] = 'mercedes'
+        plt.xticks(range(len(xx_names)), xx_names, rotation = 55.)
+    elif (feature=='Year'):
         plt.xticks(range(len(xx_names)), xx_names, rotation = 55.)
     else:
         plt.xticks(range(len(xx_names)), xx_names, rotation = 30.)

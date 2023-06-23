@@ -71,7 +71,7 @@ fig0.subplots_adjust(left=0.04, bottom=0.11, right=0.99, top=0.96, wspace=0.25, 
 
 msize_here = 20.
 
-args_order = np.array([4,5,3,6,7,1,2,10,0,9,8])
+args_order = np.array([4,5,3,1,2,6,7,10,0,9,8])
 
 # Add training feature importances in the upper panels
 for i in range(Nmodels):

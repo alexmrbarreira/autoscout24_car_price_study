@@ -170,17 +170,22 @@ for i in range(len(cols)):
     # Deal with categorial variables
     if(category_type[i] == 'category'):
         le_now = list_of_le[i]
-        xx = range(len(le_now.classes_))
+        xx_names = le_now.classes_
+        xx = range(len(xx_names))
         yy = feature_impact[i]
         # Color according to <0 or >0
         cc = np.array(['b' for i in range(len(yy))])
         cc[np.where(np.array(yy) > 0)[0]] = 'r'
         plt.bar(xx, feature_impact[i], color = cc, alpha = alpha_c)
         # Cosmetics
-        if( (feature=='Brand') or (feature=='Year') ):
-            plt.xticks(xx, le_now.classes_, rotation = 55)
+        if( feature=='Brand' ):
+            if('mercedes-benz' in xx_names):
+                xx_names[np.where(xx_names=='mercedes-benz')[0][0]] = 'mercedes'
+            plt.xticks(xx, xx_names, rotation = 55)
+        elif ( feature == 'Year' ):
+            plt.xticks(xx, xx_names, rotation = 55)
         else:
-            plt.xticks(xx, le_now.classes_, rotation = 30)
+            plt.xticks(xx, xx_names, rotation = 30)
 
     # Deal with non-categorical variables
     else:
