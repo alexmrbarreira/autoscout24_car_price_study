@@ -22,7 +22,8 @@ body_names = ['kleinwagen', 'cabrio', 'coupe', 'suv', 'kombi', 'limousine', 'van
 body_types = [    '1'     ,                     '4' ,   '5'  ,      '6'   ]
 
 # Car brands 
-brand_list = ['audi', 'bmw', 'ford', 'mercedes', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
+#brand_list = ['audi', 'bmw', 'ford', 'mercedes', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
+brand_list = ['audi', 'bmw', 'ford', 'mercedes-benz', 'opel', 'skoda', 'toyota', 'volkswagen', 'volvo']
 
 # German state capitals
 search_radius = '100' #1000 x km

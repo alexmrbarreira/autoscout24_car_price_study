@@ -54,7 +54,7 @@ def get_average_feature_importance(model, data_features, data_labels, N_random):
         average_feature_importance += get_feature_importance(model, data_features, data_labels)[0]
     return average_feature_importance/N_random, get_feature_importance(model, data_features, data_labels)[1]
 
-N_random = 10
+N_random = 1
 feature_importance_train_list = []
 feature_importance_valid_list = []
 for i in range(Nmodels):
@@ -134,6 +134,7 @@ plt.plot(xx, 1./feature_importance_valid_list[i][args_order], linewidth = 2, c =
 plt.xticks(xx, [cols[i] for i in args_order], fontsize = label_font, rotation=45.)
 plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize+6)
 plt.ylabel('Car feature importance', fontsize = label_font+6)
+plt.annotate('Results from model: \n '+model_names[i], xy = (0.4, 0.65), xycoords = 'axes fraction', fontsize = text_font+8, c = model_c[i])
 
 fig1.savefig('fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png')
 

@@ -16,10 +16,12 @@ cols     = df_total.columns.tolist()
 le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = get_encoders()
 list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty]
 
-#df = pd.read_csv('data_store/data_cars_autoscout24.csv')
-#a = df['URL'].loc[df['Owners'] > 4]
-#for i in a:
-#    print (i)
+df = pd.read_csv('data_store/data_cars_autoscout24.csv')
+a = df.loc[df['Power[HP]'] < 50]
+print (a)
+for i in a['URL']:
+    print (i)
+quit()
 
 # ================================================================ 
 # Plot # of cars as a function of features
