@@ -25,22 +25,6 @@ This figure shows the outcome of one of the best models (a random forest with 25
 | :-------------: | :--------------------------------: | :-----------------------------: |  
 | power, year, km | fuel, transmission, brand, chassis | warranty, city, owners , seller | 
 
-
-1. strong features:
-    - engine power
-    - car year
-    - number of kilometers
-2. mild features:
-    - fuel type (gas)
-    - transmission type
-    - car brand
-    - chassis
-3. weak features
-    - warranty type
-    - city
-    - number of owners
-    - seller type (autostand vs. private)
-
 <img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
 
 The next figure shows the percentage impact of each feature. This is estimated by measuring the mean percentage change of the price of cars that do not have that feature, assuming they have that feature. For example, how much do prices of non-SUV car prices changes if they are assumed to be SUV? 
