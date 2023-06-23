@@ -284,11 +284,11 @@ The code snippet for this estimation:
         # Loop over categories in feature
         for j in range(len(le_now.classes_)):
 
-            # Get predicted prices for all cars not in this category
+            # Get predicted prices for all cars without this feature
             df_now             = df_touse.loc[df_touse[feature] != encoded_variables[j]]
             prediction_def_now = model.predict(df_now.values)
 
-            # Get predicted prices assuming all of the above cars now have this catogory
+            # Get predicted prices assuming all of the above cars now have this feature
             df_now[feature]    = encoded_variables[j]
             prediction_mod_now = model.predict(df_now.values)
 
