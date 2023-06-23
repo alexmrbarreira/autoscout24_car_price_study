@@ -53,7 +53,7 @@ pickle.dump(model_4, open('model_store/model_4_random_forest.pickle', 'wb'))
 
 # Multi-layer perceptron (a dense neural network)
 layers = np.array([32, 32, 32])
-print ('Fitting multi-layer perceptron model ( layers=',layers,') ... ')
+print ('Fitting multi-layer perceptron model ( layers =',layers,') ... ')
 model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.01, shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
 model_5.fit(train_features, train_labels)
 pickle.dump(model_5, open('model_store/model_5_MLperceptron.pickle', 'wb'))
@@ -118,7 +118,7 @@ for i in range(Nmodels):
     plt.annotate(r'MSE: '+str(round(mse_train_list[i], 1))           , xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     plt.annotate(r'MPE: '+str(round(mpe_train_list[i]*100., 1))+r'\%', xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     if(i==0): plt.ylabel('Predicted price [1000 Eur]', fontsize = label_font)
-    if(i==2): plt.title('Training performance', fontsize = title_font+4)
+    if(i==2): plt.title('Machine learning model car price prediction performance (training set)', fontsize = title_font+4)
 
 # Add validation performance in the lower panels
 for i in range(Nmodels):
@@ -134,7 +134,7 @@ for i in range(Nmodels):
     plt.annotate(r'MSE: '+str(round(mse_valid_list[i], 1))           , xy = (0.50, 0.15), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     plt.annotate(r'MPE: '+str(round(mpe_valid_list[i]*100., 1))+r'\%', xy = (0.50, 0.08), xycoords = 'axes fraction', fontsize = text_font-6, c = model_c[i])
     if(i==0): plt.ylabel('Predicted price [1000 Eur]', fontsize = label_font)
-    if(i==2): plt.title('Validation performance', fontsize = title_font+4)
+    if(i==2): plt.title('Machine learning model car price prediction performance (validation set)', fontsize = title_font+4)
 
 
 fig0.savefig('fig_store/fig_model_comparison.png')

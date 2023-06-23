@@ -54,7 +54,7 @@ def get_average_feature_importance(model, data_features, data_labels, N_random):
         average_feature_importance += get_feature_importance(model, data_features, data_labels)[0]
     return average_feature_importance/N_random, get_feature_importance(model, data_features, data_labels)[1]
 
-N_random = 1
+N_random = 10
 feature_importance_train_list = []
 feature_importance_valid_list = []
 for i in range(Nmodels):
@@ -82,8 +82,8 @@ for i in range(Nmodels):
     plt.xticks(xx, [cols[i] for i in args_order], fontsize = label_font-10, rotation=90.)
     plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize)
     plt.annotate(model_names[i]                           , xy = (0.20, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
-    if(i==0): plt.ylabel('1/accuracy loss by randomization', fontsize = label_font)
-    if(i==2): plt.title('Training feature importances', fontsize = title_font+4)
+    if(i==0): plt.ylabel('Car feature importance', fontsize = label_font)
+    if(i==2): plt.title('Machine learning model car feature importances (training set)', fontsize = title_font+4)
     # for the tree based regressors, compare also with the impurity-based estimates
     if(i==2): 
         normalized_inpurity_based_feature_importance = (max(1./feature_importance_train_list[i][args_order])-1)*fi_3[args_order]/max(fi_3[args_order]) + 1.
@@ -104,8 +104,8 @@ for i in range(Nmodels):
     plt.xticks(xx, [cols[j] for j in args_order], fontsize = label_font-10, rotation=90.)
     plt.tick_params(length=tick_major, width=tickwidth, left=True, bottom=True, right=True, top=True, direction = 'in', which='major', pad=tickpad, labelsize = ticksize)
     plt.annotate(model_names[i]                           , xy = (0.20, 0.82), xycoords = 'axes fraction', fontsize = text_font-2, c = model_c[i])
-    if(i==0): plt.ylabel('1/accuracy loss by randomization', fontsize = label_font)
-    if(i==2): plt.title('Validation feature importances', fontsize = title_font+4)
+    if(i==0): plt.ylabel('Car feature importance', fontsize = label_font)
+    if(i==2): plt.title('Machine learning model car feature importances (validation set)', fontsize = title_font+4)
     # for the tree based regressors, compare also with the impurity-based estimates
     if(i==2): 
         normalized_inpurity_based_feature_importance = (max(1./feature_importance_valid_list[i][args_order])-1)*fi_3[args_order]/max(fi_3[args_order]) + 1.
@@ -128,7 +128,7 @@ fig1.subplots_adjust(left=0.08, bottom=0.16, right=0.99, top=0.94, wspace=0.25, 
 i = 3
 fig1.add_subplot(1, 1, 1)
 xx = range(N_featu)
-plt.title('Which car features play a dominant role in the price?', fontsize = title_font+4)
+plt.title('Which car features play a dominant role in the price?', fontsize = title_font+10)
 plt.scatter(xx, 1./feature_importance_valid_list[i][args_order], color = model_c[i], s = 200, marker = 'o')
 plt.plot(xx, 1./feature_importance_valid_list[i][args_order], linewidth = 2, c = model_c[i], linestyle = 'dashed')
 plt.xticks(xx, [cols[i] for i in args_order], fontsize = label_font, rotation=45.)

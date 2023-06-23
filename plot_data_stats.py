@@ -16,19 +16,18 @@ cols     = df_total.columns.tolist()
 le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = get_encoders()
 list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty]
 
-df = pd.read_csv('data_store/data_cars_autoscout24.csv')
-a = df.loc[df['Power[HP]'] < 50]
-print (a)
-for i in a['URL']:
-    print (i)
-quit()
+#df = pd.read_csv('data_store/data_cars_autoscout24.csv')
+#a = df.loc[df['Power[HP]'] < 50]
+#print (a)
+#for i in a['URL']:
+#    print (i)
 
 # ================================================================ 
 # Plot # of cars as a function of features
 # ================================================================ 
 
-fig0 = plt.figure(0, figsize = (17., 10.))
-fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.98, hspace = 0.45, wspace = 0.2)
+fig0 = plt.figure(0, figsize = (17., 10.5))
+fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.94, hspace = 0.45, wspace = 0.24)
 
 def plot_bincount(df, feature, le):
     # Add counts
@@ -79,6 +78,8 @@ for i in range(len(cols)):
     else:
         plot_bincount(df_total, cols[i], list_of_le[i])
     # Cosmetics
+    if (i ==1 ):
+        plt.title('.\hphantom{whitespace} .\hphantom{whitespace} Car distribution and mean price trend', fontsize = title_font+14)
     if ( (i==0) or (i==4) or (i==8) ):
         plt.ylabel('\# of cars', fontsize = label_font)
     if ( (i==10) or (i==11) ):
@@ -109,7 +110,7 @@ for i in range(len(corr_matrix[:,0])):
         else:
             plt.annotate(r'$'+str(corr_now)+'$', xy = (j-0.40, i+0.1), xycoords = 'data', c = 'k', fontsize = text_font-6)
 # Cosmetics
-plt.title('Correlation matrix', fontsize = title_font+4)
+plt.title('Correlation matrix of car features', fontsize = title_font+4)
 plt.xticks(range(len(cols)), cols, fontsize = ticksize, rotation = 45.)
 plt.yticks(range(len(cols)), cols, fontsize = ticksize, rotation = 45.)
 cb = plt.colorbar()

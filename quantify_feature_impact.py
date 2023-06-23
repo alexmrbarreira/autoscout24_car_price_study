@@ -201,12 +201,13 @@ for i in range(len(cols)):
         plt.ylim(-nonadap_max, nonadap_max)
     plt.axhline(0., linestyle = 'dashed', c = 'k', linewidth = 2.)
     if ( (i==0) or (i==3) or (i==7) ):
-        plt.ylabel(r'Feature impact [\%]', fontsize = label_font)
+        plt.ylabel(r'Impact [\%]', fontsize = label_font)
     plt.tick_params(length=tick_major, width=tickwidth , bottom=True, top=True, left=True, right=True, direction = 'in', which = 'major', pad = tickpad, labelsize = ticksize)
     if ( (i==9) or (i==10) ):
         plt.xlabel(cols[i], fontsize = label_font)
     if (i==0):
-        plt.annotate('Results from model: \n '+model_names[imodel], xy = (-1.25, 0.3), xycoords = 'axes fraction', fontsize = text_font+8, c = model_c[imodel])
+        plt.annotate('Impact of car features \n in setting the car price', xy = (-1.40, 0.5), xycoords = 'axes fraction', fontsize = text_font+8, c = 'k')
+        plt.annotate('Results from model: \n '+model_names[imodel]       , xy = (-1.40, 0.1), xycoords = 'axes fraction', fontsize = text_font, c = model_c[imodel])
 
 fig0.savefig('fig_store/fig_feature_impact_single_model.png')
 
