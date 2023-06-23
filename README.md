@@ -29,6 +29,10 @@ This figure shows the outcome of one of the best models (a random forest with 25
 
 The next figure shows the impact of each feature: estimated by measuring the percentage change of car prices that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? 
 
+<img src="fig_store/fig_feature_impact_single_model.png">
+
+The main takeaways are:
+
 1. Again, engine power, kilometer and year have the strongest impact (several tens of %, depending on feature value). As expected, the price increases for 
     - more powerful cars
     - cars with less kilometers
@@ -39,9 +43,6 @@ The next figure shows the impact of each feature: estimated by measuring the per
     - if all other cars were diesel, they'd be 14% more expensive
     - if all manual cars were automatic, they'd be 14% more expensive
 3. Finally, the impact of the city, seller, number of owners and warranty is negligible ($\lesssim$ 1\%).
-
-
-<img src="fig_store/fig_feature_impact_single_model.png">
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
