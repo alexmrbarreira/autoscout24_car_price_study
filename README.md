@@ -98,7 +98,7 @@ A few takeaway points:
 3. The model that performs the best, the random forest, predicts a small but non-negligible importance of the types of fuel, transmission, brand and chassis. 
 4. The warranty type, city, owners and seller type are deemed of negligible importance by the best random forest model. 
 
-It is interesting that in previous figures we saw marked correlations between average car prices and properties with very low feature importance. For example, car prices are on average lower if they are sold privately. These results indicate however that this is because cars sold privately likely have other features that lower their prices. In other words, with everything else fixed, if a car is sold privately this does not penalize its final price.
+In previous figures we saw marked correlations between average car prices and properties with very low feature importance. For example, car prices are on average lower if they are sold privately. These results indicate however that this is because cars sold privately likely have other features that lower their prices. In other words, with everything else fixed, if a car is sold privately this does not penalize its final price.
 
 In the decision tree and random forest panels, we compare also against the feature importances estimated directly by the sklearn functions based on the Gini impurity (shown as the dotted black lines). They agree noticeably well with our own feature importance estimates (just with the exception that the decision tree inpurity-based importance for car transmission is interestingly ranked higher).
 
