@@ -1,6 +1,4 @@
 # autoscout24_prices_study
-<!-- ==================================================================================================================== -->
-<!-- ==================================================================================================================== -->
 
 A study of what determines the price of used cars on sale in the german website [autoscout24.de](https://www.autoscout24.de/).
 
@@ -8,21 +6,43 @@ These python scripts execute two main tasks:
 1. scrape the autoscout24.de webpages to extract car data for different german cities, car brands and body types.
 2. train machine learning models to predict car prices and study the relative importance of different car features to the final price.
 
-This figure shows the outcome of one of the best models:
-
-1. the engine power is the most important feature in setting the car price, followed by the car year and the number of kilometers. 
-2. The fuel type (gas), type of transmission, car brand and chassis type have a smaller, but non-negligible importance.
-3. The warranty type, city, number of owners and seller type (autostand vs. private) play a negligible role.
-
-<img src="fig_store/fig_feature_importances_by_randomization_model_4_random_forest.png" width="600" height=auto/>
-
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
 ## Table of contents
+- [Overview of main results](#overview-of-main-results)
 - [The car data](#the-car-data)
 - [Machine learning model predictions](#machine-learning-model-predictions)
 - [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
 - [Code overview](#code-overview)
+
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
+## Overview of main results
+
+This figure shows the outcome of one of the best models (a random forest with 25 trees):
+
+<img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
+
+| Strong features |             Mild features          |           Weak features         | 
+| :-------------: | :--------------------------------: | :-----------------------------: |  
+| power, year, km | fuel, transmission, brand, chassis | warranty, city, owners , seller | 
+
+The next figure shows the impact of each feature: estimated by measuring the percentage change of car prices that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? 
+
+<img src="fig_store/fig_feature_impact_single_model.png">
+
+The main takeaways are:
+
+1. Strong impact (several tens of %, depending on feature value) from engine power, kilometers and car year. The price increases for 
+    - more powerful cars
+    - cars with less kilometers
+    - younger cars.
+2. Mild impact (5-20%) from brand, chassis type, fuel type and transmission. For example:
+    - if all other cars were BMW, they would be ~7% more expensive
+    - if all other cars were SUV, they'd be 10% more expensive
+    - if all other cars were diesel, they'd be 14% more expensive
+    - if all manual cars were automatic, they'd be 14% more expensive
+3. Weak impact ($\lesssim$ 1\%) from city, seller, number of owners and warranty.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
@@ -246,4 +266,53 @@ for i in range(Nmodels):
 ```
 
 The function *get_feature_importance()* estimates the feature importance by randomization; the function *get_average_feature_importance()* does the estimations N_random times to get an average value.
+
+<!-- ==================================================================================================================== -->
+<!-- ==================================================================================================================== -->
+#### quantify_feature_impact.py
+
+This file quantifies the impact of each car feature by measuring the mean percentage impact in car prices that do not have that feature, assuming that they have that feature. 
+
+The code snippet for this estimation:
+
+```ruby
+    # Deal with categorial variables
+    if(category_type[i] == 'category'):
+        le_now             = list_of_le[i]
+        encoded_variables  = le_now.transform(le_now.classes_)
+
+        # Loop over categories in feature
+        for j in range(len(le_now.classes_)):
+
+            # Get predicted prices for all cars without this feature
+            df_now             = df_touse.loc[df_touse[feature] != encoded_variables[j]]
+            prediction_def_now = model.predict(df_now.values)
+
+            # Get predicted prices assuming all of the above cars now have this feature
+            df_now[feature]    = encoded_variables[j]
+            prediction_mod_now = model.predict(df_now.values)
+
+            # Estimate impact (mean percentage change)
+            feature_impacts_now.append( 100. * np.mean(prediction_mod_now/prediction_def_now-1.) )
+
+    # Deal with non-categorial variables
+    else:
+        bin_edges = list_of_bin_edges[i]
+        bin_means = list_of_bin_means[i]
+        # Loop over bins in feature
+        for j in range(len(bin_edges)-1):
+
+            # Get predicted prices for all cars not in this bin
+            df_now             = df_touse.loc[ (df_touse[feature] < bin_edges[j]) | (df_touse[feature] > bin_edges[j+1]) ]
+            prediction_def_now = model.predict(df_now.values)
+
+            # Get predicted prices assuming all of the above cars have now this bin's mean value
+            df_now[feature]    = bin_means[j]
+            prediction_mod_now = model.predict(df_now.values)
+
+            # Estimate impact (mean percentage change)
+            feature_impacts_now.append( 100. * np.mean(prediction_mod_now/prediction_def_now-1.) )
+```
+
+Executing *python quantify_feature_impact.py* will perform this estimation and produce a plot showing it for the selected model. Select different models with the variable *imodel = (0,1,2,3,4)*.
 
