@@ -21,11 +21,11 @@ These python scripts execute two main tasks:
 
 This figure shows the outcome of one of the best models (a random forest with 25 trees):
 
+<img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
+
 | Strong features |             Mild features          |           Weak features         | 
 | :-------------: | :--------------------------------: | :-----------------------------: |  
 | power, year, km | fuel, transmission, brand, chassis | warranty, city, owners , seller | 
-
-<img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
 
 The next figure shows the percentage impact of each feature. This is estimated by measuring the mean percentage change of the price of cars that do not have that feature, assuming they have that feature. For example, how much do prices of non-SUV car prices changes if they are assumed to be SUV? 
 
