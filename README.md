@@ -273,5 +273,46 @@ The function *get_feature_importance()* estimates the feature importance by rand
 
 This file quantifies the impact of each car feature by measuring the mean percentage impact in car prices that do not have that feature, assuming that they have that feature. 
 
+The code snippet for this estimation for the categorical variables (inspect the code for the non-categorical variables):
+
+```ruby
+    # Deal with categorial variables
+    if(category_type[i] == 'category'):
+        le_now             = list_of_le[i]
+        encoded_variables  = le_now.transform(le_now.classes_)
+
+        # Loop over categories in feature
+        for j in range(len(le_now.classes_)):
+
+            # Get predicted prices for all cars not in this category
+            df_now             = df_touse.loc[df_touse[feature] != encoded_variables[j]]
+            prediction_def_now = model.predict(df_now.values)
+
+            # Get predicted prices assuming all of the above cars now have this catogory
+            df_now[feature]    = encoded_variables[j]
+            prediction_mod_now = model.predict(df_now.values)
+
+            # Estimate impact (mean percentage change)
+            feature_impacts_now.append( 100. * np.mean(prediction_mod_now/prediction_def_now-1.) )
+
+    # Deal with non-categorial variables
+    else:
+        bin_edges = list_of_bin_edges[i]
+        bin_means = list_of_bin_means[i]
+        # Loop over bins in feature
+        for j in range(len(bin_edges)-1):
+
+            # Get predicted prices for all cars not in this bin
+            df_now             = df_touse.loc[ (df_touse[feature] < bin_edges[j]) | (df_touse[feature] > bin_edges[j+1]) ]
+            prediction_def_now = model.predict(df_now.values)
+
+            # Get predicted prices assuming all of the above cars have now this bin's mean value
+            df_now[feature]    = bin_means[j]
+            prediction_mod_now = model.predict(df_now.values)
+
+            # Estimate impact (mean percentage change)
+            feature_impacts_now.append( 100. * np.mean(prediction_mod_now/prediction_def_now-1.) )
+```
+
 Executing *python quantify_feature_impact.py* will perform this estimation and produce a plot showing it for the selected model. Select different models with the variable *imodel = (0,1,2,3,4)*.
 
