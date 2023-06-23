@@ -29,8 +29,10 @@ This figure shows the outcome of one of the best models (a random forest with 25
 
 The next figure shows the percentage impact of each feature. This is estimated by measuring the mean percentage change of the price of cars that do not have that feature, assuming they have that feature. For example, how much do prices of non-SUV car prices changes if they are assumed to be SUV? 
 
-1. As expected from the figure above, engine power, kilometer and year have the strongest impact
-    - the price increases significantly (several tens of %) for more powerful cars, cars with less kilometers and younger cars.
+1. Again, engine power, kilometer and year have the strongest impact (several tens of %, depending on feature value). As expected, the price increases for 
+    - more powerful cars
+    - cars with less kilometers
+    - younger cars.
 2. Next, brand, chassis type, fuel type and transmission have a smaller, but important impact (5-20%). For example:
     - if all other cars were BMW, they would be ~7% more expensive
     - if all other cars were SUV, they'd be 10% more expensive
