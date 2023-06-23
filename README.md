@@ -27,7 +27,7 @@ This figure shows the outcome of one of the best models (a random forest with 25
 | :-------------: | :--------------------------------: | :-----------------------------: |  
 | power, year, km | fuel, transmission, brand, chassis | warranty, city, owners , seller | 
 
-The next figure shows the percentage impact of each feature. This is estimated by measuring the mean percentage change of the price of cars that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? 
+The next figure shows the impact of each feature: estimated by measuring the percentage change of car prices that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? 
 
 1. Again, engine power, kilometer and year have the strongest impact (several tens of %, depending on feature value). As expected, the price increases for 
     - more powerful cars
