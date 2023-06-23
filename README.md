@@ -33,7 +33,7 @@ The next figure shows the impact of each feature: estimated by measuring the per
 
 The main takeaways are:
 
-1. Again, engine power, kilometer and year have the strongest impact (several tens of %, depending on feature value). As expected, the price increases for 
+1. Strong impact (several tens of %, depending on feature value) from engine power, kilometers and car year. As one would expect, the price increases for 
     - more powerful cars
     - cars with less kilometers
     - younger cars.
