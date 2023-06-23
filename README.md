@@ -21,9 +21,25 @@ These python scripts execute two main tasks:
 
 This figure shows the outcome of one of the best models (a random forest with 25 trees):
 
-1. the engine power is the most important feature in setting the car price, followed by the car year and the number of kilometers. 
-2. The fuel type (gas), type of transmission, car brand and chassis type have a smaller, but non-negligible importance.
-3. The warranty type, city, number of owners and seller type (autostand vs. private) play a negligible role.
+| Strong features |             Mild features          |           Weak features         | 
+| :-------------: | :--------------------------------: | :-----------------------------: |  
+| power, year, km | fuel, transmission, brand, chassis | warranty, city, owners , seller | 
+
+
+1. strong features:
+    - engine power
+    - car year
+    - number of kilometers
+2. mild features:
+    - fuel type (gas)
+    - transmission type
+    - car brand
+    - chassis
+3. weak features
+    - warranty type
+    - city
+    - number of owners
+    - seller type (autostand vs. private)
 
 <img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
 
