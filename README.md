@@ -19,7 +19,7 @@ These python scripts execute two main tasks:
 <!-- ==================================================================================================================== -->
 ## Overview of main results
 
-This figure shows the outcome of one of the best models (a random forest with 25 trees):
+This figure shows the outcome of one of the best models (random forest):
 
 <img src="fig_store/fig_feature_importances_by_randomization_single_model.png" width="600" height=auto/>
 
