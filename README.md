@@ -55,7 +55,7 @@ The car data was collected for:
 - the brands: Audi, BMW, Ford, Mercedes, Open, Skoda, Toyota, Volkswagen and Volvo
 - the body (chassis) types: small car (kleinwagen), sedan (limousine), station-wagon (kombi) and SUV.
 
-There is a total of 364036 cars in the data set (data_store/data_cars_autoscout24.csv).
+There is a total of 364,036 cars in the data set (data_store/data_cars_autoscout24.csv).
 
 This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
 
