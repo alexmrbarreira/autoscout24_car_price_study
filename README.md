@@ -71,24 +71,24 @@ For example, the car prices increase with increasing engine power (correlation c
 <!-- ==================================================================================================================== -->
 ## Machine learning model predictions
 
-This figure compares the accuracy of 5 regression models in predicting car prices. The models tested are 
+The next figure compares the accuracy of 5 regression models in predicting car prices. The models tested are 
 1. a linear regression model,
-2. a k nearest neighbors model (11 neighbors),
+2. a k nearest neighbors model (6 neighbors),
 3. a decision tree,
-4. a random forest (ensemble of 25 trees),
-5. a multi-layer perceptron (dense neural network with 3 32-node hidden layers). 
+4. a random forest (ensemble of 4 trees),
+5. a multi-layer perceptron (dense neural network with 3 16-node hidden layers). 
 
-The upper panels are for the training set and the lower panels for the validation set.
+The figure plots the true prices of the cars against the prices predicted by the machine learning models. The upper panels are for the training set and the lower panels for the validation set.
 
 <img src="fig_store/fig_model_comparison.png">
 
-The mean absolute percentage errors on the validation sets are (also listed in the figure panels):
+The mean absolute percentage errors on the validation set are (also listed in the figure panels):
 
 | Lin. regression | k nearest neighbors | Decision tree | Random forest | Multi-layer perceptron | 
 | :-------------: | :-----------------: | :-----------: | :-----------: | :--------------------: | 
-|      19.1%      |         13.9%       |      12.8%    |      9.8%     |         14.3%          | 
+|      19.3%      |         12.0%       |      8.1%     |      7.8%     |         13.3%          | 
 
-The random forest model performs the best, with a mean percentage error just under 10% on the validation set. The simpler linear regression model performs the worst. The other three models display reasonable accuracy -- note that the decision tree drastically overfits the training set, but performs closer to the other models in the validation set.
+The random forest model performs the best, with a mean percentage error just under 8% on the validation set. The simpler linear regression model performs the worst. The other three models display alsoreasonable accuracy -- note that the decision tree drastically overfits the training set, but performs closer to the other models in the validation set.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
