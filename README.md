@@ -27,7 +27,7 @@ This figure shows the outcome of one of the best models (random forest):
 | :--------------------: | :-------------------------: | :----------------------------: |  
 | power, year, km, brand | chassis, fuel, transmission | warranty, city, owners, seller | 
 
-The next figure shows the impact of each feature: estimated by measuring the percentage change of car prices that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? Answer: 13% (top right panel in the figure).
+The next figure shows the impact of each feature: estimated by measuring the percentage change of car prices that do not have that feature, assuming they have that feature. For example, how do prices of non-SUV cars change if they are assumed to be SUV? Answer: 13% more expensive (red bar on the top right panel in the figure).
 
 <img src="fig_store/fig_feature_impact_single_model.png">
 
