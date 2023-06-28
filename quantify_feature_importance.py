@@ -54,7 +54,7 @@ def get_average_feature_importance(model, data_features, data_labels, N_random):
         average_feature_importance += get_feature_importance(model, data_features, data_labels)[0]
     return average_feature_importance/N_random, get_feature_importance(model, data_features, data_labels)[1]
 
-N_random = 10
+N_random = 1
 feature_importance_train_list = []
 feature_importance_valid_list = []
 for i in range(Nmodels):

@@ -17,7 +17,7 @@ le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owne
 list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty]
 
 #df = pd.read_csv('data_store/data_cars_autoscout24.csv')
-#a = df.loc[df['Seller'] == '-']
+#a = df.loc[df['Owners'] > 4]
 #print (a)
 #for i in a['URL']:
 #    print (i)
@@ -27,8 +27,8 @@ list_of_le = [None, le_city, le_brand, le_body, None, None, le_year, le_gas, le_
 # Plot # of cars as a function of features
 # ================================================================ 
 
-fig0 = plt.figure(0, figsize = (17., 10.5))
-fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.94, hspace = 0.45, wspace = 0.24)
+fig0 = plt.figure(0, figsize = (17., 11.5))
+fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.94, hspace = 0.47, wspace = 0.24)
 
 def plot_bincount(df, feature, le):
     # Add counts
@@ -50,6 +50,8 @@ def plot_bincount(df, feature, le):
         plt.xticks(range(len(xx_names)), xx_names, rotation = 55.)
     elif (feature=='Year'):
         plt.xticks(range(len(xx_names)), xx_names, rotation = 55.)
+    elif (feature=='City'):
+        plt.xticks(range(len(xx_names)), xx_names, rotation = 75.)
     else:
         plt.xticks(range(len(xx_names)), xx_names, rotation = 30.)
     plt.tick_params(length=tick_major, width=tickwidth , bottom=True, top=True, left=True, right=True, direction = 'in', which = 'major', pad = tickpad, labelsize = ticksize)

@@ -155,8 +155,8 @@ if (verbose):
 # Make plot 
 # ================================================================
 
-fig0 = plt.figure(0, figsize = (17., 10.))
-fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.98, hspace = 0.45, wspace = 0.2)
+fig0 = plt.figure(0, figsize = (17., 11.))
+fig0.subplots_adjust(left=0.06, right=0.99, bottom=0.10, top = 0.98, hspace = 0.49, wspace = 0.2)
 
 #adaptive_max = True
 adaptive_max = False
@@ -184,6 +184,8 @@ for i in range(len(cols)):
             plt.xticks(xx, xx_names, rotation = 55)
         elif ( feature == 'Year' ):
             plt.xticks(xx, xx_names, rotation = 55)
+        elif ( feature == 'City' ):
+            plt.xticks(xx, xx_names, rotation = 75)
         else:
             plt.xticks(xx, xx_names, rotation = 30)
 
@@ -204,6 +206,8 @@ for i in range(len(cols)):
         plt.ylim(-max_abs_val, max_abs_val)
     else:
         plt.ylim(-nonadap_max, nonadap_max)
+        if( (i==0) | (i==8) | (i==9) | (i==10) ):
+            plt.annotate('Weak impact \n (unnoticeable on this scale)', xy = (0.15, 0.66), xycoords = 'axes fraction', fontsize = text_font-4, c = 'k')
     plt.axhline(0., linestyle = 'dashed', c = 'k', linewidth = 2.)
     if ( (i==0) or (i==3) or (i==7) ):
         plt.ylabel(r'Impact [\%]', fontsize = label_font)

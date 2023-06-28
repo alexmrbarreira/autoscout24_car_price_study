@@ -40,6 +40,13 @@ def prepare_data(filename):
     print ('')
     print ('Removed', n0-n1, 'rows with 1000Km > 300')
 
+    # Keep only cars with <= 3 owners (to remove some outliers/mistakes in autoscout24.de data)
+    n0 = df.shape[0]
+    df = df.loc[df['Owners'] <= 3.]
+    n1 = df.shape[0]
+    print ('')
+    print ('Removed', n0-n1, 'rows with Owners > 3')
+
     # Replace nan in Owners with most common, and Warranty with 'Nein'
     most_common_owners = df['Owners'].mode()[0]
     df['Owners']       = df['Owners'].fillna(most_common_owners)
@@ -76,6 +83,28 @@ def prepare_data(filename):
     df['Transmission'].loc[df['Transmission'].str.contains('km', na=False)]            = 'Automatik'
     df['Transmission'].loc[df['Transmission'].str.contains('-', na=False)]             = 'Automatik'
     df['Transmission'].loc[df['Transmission'].str.contains('Halbautomatik', na=False)] = 'Automatik'
+    print ('')
+    print ('In Transmission, if km are specified assume electric and thus automatik')
+
+#    # In City, split cities into east and west Germany
+#    df['City'].loc[ (df['City'] == 'erfurt')    | 
+#                    (df['City'] == 'dresden')   | 
+#                    (df['City'] == 'magdeburg') | 
+#                    (df['City'] == 'potsdam')   | 
+#                    (df['City'] == 'berlin')   | 
+#                    (df['City'] == 'schwerin') ] = 'east'
+#    df['City'].loc[ (df['City'] == 'kiel')    | 
+#                    (df['City'] == 'hamburg')   | 
+#                    (df['City'] == 'bremen') | 
+#                    (df['City'] == 'hannover') | 
+#                    (df['City'] == 'düsseldorf') | 
+#                    (df['City'] == 'wiesbaden') | 
+#                    (df['City'] == 'mainz') | 
+#                    (df['City'] == 'stuttgart') | 
+#                    (df['City'] == 'saarbrücken')   | 
+#                    (df['City'] == 'münchen') ] = 'west'
+#    print ('')
+#    print ('In City, organized into east and west state capitals')
 
     # Label encode categorial variables
     print ('')
@@ -106,8 +135,7 @@ def prepare_data(filename):
 
 print ('')
 print ('Preparing data ...')
-#df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
-df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24_munich_berlin_allbrands_btypes1456.csv')
+df_prepared, le_city, le_brand, le_body, le_year, le_gas, le_transmission, le_seller, le_owners, le_warranty = prepare_data('data_store/data_cars_autoscout24.csv')
 
 # Save encoders for later use in transformations
 pickle.dump(le_city        , open('encoder_store/le_city.pkl'        , 'wb'))
