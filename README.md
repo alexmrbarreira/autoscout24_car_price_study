@@ -10,7 +10,7 @@ These python scripts execute two main tasks:
 <!-- ==================================================================================================================== -->
 ## Table of contents
 - [Overview of main results](#overview-of-main-results)
-- [The car data](#the-car-data)
+- [Car data overview](#car-data-overview)
 - [Machine learning model predictions](#machine-learning-model-predictions)
 - [Feature importances from the machine learning models](#feature-importances-from-the-machine-learning-models)
 - [Code overview](#code-overview)
@@ -46,9 +46,16 @@ The main takeaways are:
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
-## The car data
+## Car data overview
 
-The data was collected for 
+The car data was collected for:
+
+- for cars after 2013;
+- all 16 German state capitals;
+- the brands: Audi, BMW, Ford, Mercedes, Open, Skoda, Toyota, Volkswagen and Volvo
+- the body (chassis) types: small car (kleinwagen), sedan (limousine), station-wagon (kombi) and SUV.
+
+There is a total of 364036 cars in the data set (data_store/data_cars_autoscout24.csv).
 
 This figure shows the car feature distribution (green histograms). The orange line shows the price trend, ie. the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
 
