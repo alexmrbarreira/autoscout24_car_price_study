@@ -50,7 +50,7 @@ The main takeaways are:
 
 The car data was collected for:
 
-- for cars after 2013;
+- cars after 2013;
 - all 16 German state capitals;
 - the brands: Audi, BMW, Ford, Mercedes, Open, Skoda, Toyota, Volkswagen and Volvo
 - the body (chassis) types: small car (kleinwagen), sedan (limousine), station-wagon (kombi) and SUV.
