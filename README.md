@@ -57,18 +57,15 @@ The car data was collected for:
 
 There is a total of 364,036 cars in the data set (data_store/data_cars_autoscout24.csv).
 
-This figure shows the car feature distribution (green histograms). The orange line shows the price trend: the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across features). A couple of takeaways from the figure:
-
-1. The average prices decrease with the kilometers, and increase with engine power and car year (more recent, more expensive).
-2. Cars with manual transmission, petrol as fuel (benzin) and sold by private sellers are also cheaper on average. 
+This figure shows the car feature distribution (green histograms). The orange line shows the price trend: the mean price per feature normalized by a constant to fit in the plot (note this is not the actual price, just how it varies on average across each feature's values).
 
 <img src="fig_store/fig_data_stats_counts.png">
 
-The correlation matrix shown next displays some of the main takeaway points.
+The next fifugre shows how strongly correlated (or anti-correlated) the different car features are.
 
 <img src="fig_store/fig_data_stats_correlation.png" width="600" height=auto/>
 
-Note however that, of course, a correlation does not imply a causation. The machine learning models discussed next will be able to provide more insights on what actually determines the car prices.
+For example, the car prices increase with increasing engine power (correlation coefficient of 0.73). Further, the price is anti-correlated with the number of owners (correlation coefficient of -0.22). Of course, *correlation does not imply causation*. The machine learning models discussed next will provide more insights on what actually determines the car prices.
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
