@@ -94,19 +94,18 @@ The random forest model performs the best, with a mean percentage error just und
 <!-- ==================================================================================================================== -->
 ## Feature importances from the machine learning models
 
-This figure shows the importance of the car features in setting the final price. For each model and data set, the feature importances are computed by measuring the loss in accuracy after randomizing each data entries. For example, to measure the importance of the car year, we (i) randomize the year values of the cars, (ii) predict the resulting prices, and (iii) determine the importance as the ratio of the mean percentage error before and after randomization.
+The next figure shows the importance of the car features in setting the final price. For each model and data set, the feature importances are computed by measuring the loss in accuracy after randomizing each data entries. For example, to measure the importance of the car year, we (i) randomize the year values of the cars, (ii) predict the resulting prices, and (iii) determine the importance as the ratio of the mean percentage error before and after randomization.
 
 <img src="fig_store/fig_feature_importances_by_randomization.png">
 
 A few takeaway points:
 1. All models agree that (i) engire power, (ii) car year and (iii) number of kilometers are the most important car features.
-2. The linear regression (blue) and k nearest neighbors models (green) predict negligible importance for all other car features.
-3. The model that performs the best, the random forest, predicts a small but non-negligible importance of the types of fuel, transmission, brand and chassis. 
-4. The warranty type, city, owners and seller type are deemed of negligible importance by the best random forest model. 
+2. The model that performs the best, the random forest, assigns also some importance to the car brand, fuel, transmission and chassis type. 
+3. The warranty type, city, owners and seller type are deemed of negligible importance by all models. 
 
-In previous figures we saw marked correlations between average car prices and properties with very low feature importance. For example, car prices are on average lower if they are sold privately. These results indicate however that this is because cars sold privately likely have other features that lower their prices. In other words, with everything else fixed, if a car is sold privately this does not penalize its final price.
+Interestingly, all models give very little importance to the number of previous owners, despite the price being correlated with it. This indicates that this correlation does not follow from a causal relation, ie., with all other car fetures the same, the fact that a car had more than 1 previous owner does not appear to have an impact on the final price.
 
-In the decision tree and random forest panels, we compare also against the feature importances estimated directly by the sklearn functions based on the Gini impurity (shown as the dotted black lines). They agree noticeably well with our own feature importance estimates (just with the exception that the decision tree inpurity-based importance for car transmission is interestingly ranked higher).
+In the decision tree and random forest panels, we compare also against the feature importances estimated directly by the sklearn functions based on the Gini impurity (shown as the dotted black lines).
 
 <!-- ==================================================================================================================== -->
 <!-- ==================================================================================================================== -->
