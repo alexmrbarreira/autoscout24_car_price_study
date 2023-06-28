@@ -32,7 +32,7 @@ model_1.fit(train_features, train_labels)
 pickle.dump(model_1, open('model_store/model_1_lin_regression.pickle', 'wb'))
 
 # K Nearest Neighbors
-knn = 11
+knn = 6
 print ('Fitting k nearest neighbors model ( k = ',knn,') ... ')
 model_2 = neighbors.KNeighborsRegressor(n_neighbors=knn)
 model_2.fit(train_features, train_labels)
@@ -45,14 +45,14 @@ model_3.fit(train_features, train_labels)
 pickle.dump(model_3, open('model_store/model_3_decision_tree.pickle', 'wb'))
 
 # Random forest
-n_trees = 25
+n_trees = 4
 print ('Fitting random forest model ( Ntrees = ',n_trees,') ... ')
 model_4 = ensemble.RandomForestRegressor(n_estimators=n_trees)
 model_4.fit(train_features, train_labels)
 pickle.dump(model_4, open('model_store/model_4_random_forest.pickle', 'wb'))
 
 # Multi-layer perceptron (a dense neural network)
-layers = np.array([32, 32, 32])
+layers = np.array([16, 16, 16])
 print ('Fitting multi-layer perceptron model ( layers =',layers,') ... ')
 model_5 = neural_network.MLPRegressor(layers, activation='relu', solver='adam', batch_size='auto', learning_rate_init=0.01, shuffle=True, early_stopping=True, n_iter_no_change=10, verbose=False)
 model_5.fit(train_features, train_labels)
